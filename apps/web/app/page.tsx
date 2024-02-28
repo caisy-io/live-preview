@@ -3,6 +3,8 @@ import { Card } from "@repo/ui/card";
 import { Code } from "@repo/ui/code";
 import styles from "./page.module.css";
 import { Button } from "@repo/ui/button";
+import { ConnectionIndicator } from "@repo/live-preview-react/ConnectionIndicator";
+import { Test } from "@repo/live-preview-react/test";
 
 function Gradient({
   conic,
@@ -58,6 +60,7 @@ export default function Page(): JSX.Element {
         <p>
           examples/basic&nbsp;
           <Code className={styles.code}>web</Code>
+          <Test />
         </p>
         <div>
           <a
