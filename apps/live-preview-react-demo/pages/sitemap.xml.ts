@@ -61,7 +61,7 @@ export const getServerSideProps: GetServerSideProps = async ({
             return `
             <url>
               <loc>${baseUrl}/${slug}</loc>
-              ${locales
+              ${(locales ? locales : [])
                 .map(
                   (loc) => `
                 <xhtml:link

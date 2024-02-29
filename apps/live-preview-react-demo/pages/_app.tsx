@@ -29,7 +29,7 @@ function hexToRgbA(hex, alpha) {
       ")"
     );
   }
-  return undefined;
+  return "";
 }
 
 export default function App({ Component, pageProps }) {
@@ -97,9 +97,9 @@ export default function App({ Component, pageProps }) {
   const { Page: page } = pageProps as IPage;
 
   const meta = {
-    title: page?.metaTitle,
-    description: page?.metaDescription,
-    keywords: page?.metaKeywords,
+    title: page?.metaTitle || "",
+    description: page?.metaDescription || "",
+    keywords: page?.metaKeywords || "",
     metaImage: page?.featuredImage?.[0] as IGenAsset,
   };
 
@@ -219,11 +219,15 @@ export default function App({ Component, pageProps }) {
         )}
         <meta
           property="og:image:alt"
-          content={meta.metaImage ? meta.metaImage.title : "Demo projectimage"}
+          content={
+            meta.metaImage?.title ? meta.metaImage.title : "Demo projectimage"
+          }
         />
         <meta
           property="twitter:image:alt"
-          content={meta.metaImage ? meta.metaImage.title : "Demo project image"}
+          content={
+            meta.metaImage?.title ? meta.metaImage.title : "Demo project image"
+          }
         />
         <meta
           property="og:locale"

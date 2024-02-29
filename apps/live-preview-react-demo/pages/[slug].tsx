@@ -11,7 +11,11 @@ import { q_page } from "../utils/gql/queries/q_page";
 import { q_slugs } from "../utils/gql/queries/q_slugs";
 import { q_universal_text } from "../utils/gql/queries/q_universal_text";
 import { IPage } from "../utils/types";
-import { IGenPage, IGenQuery } from "../utils/types_gen";
+import {
+  IGenFooter_LegalSection,
+  IGenPage,
+  IGenQuery,
+} from "../utils/types_gen";
 type ISlugPage = Pick<IPage, "navigation" | "footer" | "Page"> & {
   isIndexPage: boolean | null;
 };
@@ -33,7 +37,8 @@ const NextjsPage = (props: ISlugPage) => {
     }
   };
 
-  const homePageSlug = (props?.navigation?.home?.[0] as IGenPage)?.slug;
+  const homePageSlug = (props?.navigation?.home?.[0] as IGenPage)
+    ?.slug as string;
 
   return (
     <>
@@ -41,7 +46,9 @@ const NextjsPage = (props: ISlugPage) => {
         <Header
           homePageSlug={homePageSlug}
           firstCompoentHeight={getFirstCompHeight()}
-          legalSection={props?.footer?.legalSection}
+          legalSection={
+            props?.footer?.legalSection as IGenFooter_LegalSection[]
+          }
           {...props.navigation}
         />
       )}
