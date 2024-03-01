@@ -43,7 +43,7 @@ export const startInspectMode = ({
 }) => {
   const defaultLocale = locale;
   const interactiveElement = createInteractiveElement();
-  let positioningElement = null;
+  let positioningElement: HTMLElement;
 
   const updateElementPosition = () => {
     if (!positioningElement || !interactiveElement) return false;
@@ -119,17 +119,17 @@ export const startInspectMode = ({
     if (activeFieldName && activeDocumentId && activeLocale) {
       // console.log(activeDocumentId, activeFieldName, activeLocale);
 
-      const sameUserEditorPeers = window.c.collaboration.peers.filter(
+      const sameUserEditorPeers = window.c.collaboration?.peers.filter(
         (p) =>
-          p.clientId !== window.c.collaboration.ownClientId &&
+          p.clientId !== window.c.collaboration?.ownClientId &&
           !clientIsPreviewRole(p.clientId) && // exclude preview role
           p.clientId.slice(0, 38) ==
-            window.c.collaboration.ownClientId.slice(0, 38) // only same user id get the updates
+            window.c.collaboration?.ownClientId?.slice(0, 38) // only same user id get the updates
       );
 
       // console.log(` sameUserEditorPeers`, sameUserEditorPeers);
       broadcastToAllPeers(
-        sameUserEditorPeers,
+        sameUserEditorPeers || [],
         encodeAnyJSONMessage({
           messageType: PEER_MESSAGE_TYPE_PREVIEW_FIELD_ACTIVE,
           body: {

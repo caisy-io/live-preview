@@ -13,18 +13,18 @@ export const createPubSub = (): PubSub => {
     if (!events[event]) {
       events[event] = [];
     }
-    events[event].push(callback);
+    events[event]?.push(callback);
   };
 
   const emit: PubSub["emit"] = (event, data) => {
     if (events[event]) {
-      events[event].forEach((callback) => callback(...data));
+      events[event]?.forEach((callback) => callback(...data));
     }
   };
 
   const off: PubSub["off"] = (event, callback) => {
     if (events[event]) {
-      events[event] = events[event].filter((cb) => cb !== callback);
+      events[event] = events[event]?.filter((cb) => cb !== callback) || [];
     }
   };
 

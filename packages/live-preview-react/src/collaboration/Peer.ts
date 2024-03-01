@@ -1,4 +1,5 @@
 import * as SimplePeer from "simple-peer";
+// @ts-ignore
 import { Observable } from "lib0/observable";
 
 import router from "next/router";
@@ -19,6 +20,7 @@ import { onPeerMessage } from "./onPeerMessage";
 
 export class Peer extends Observable<any> {
   clientId: string;
+  // @ts-ignore
   websocket: WebSocket;
   p2p: SimplePeer.Instance;
   localPingInterval: any;
@@ -36,7 +38,7 @@ export class Peer extends Observable<any> {
   init() {
     const state = window.c.collaboration!;
 
-    state.localBroadcastChannel.postMessage(
+    state.localBroadcastChannel?.postMessage(
       JSON.stringify({
         t: BROADCASTCHANNEL_MESSAGE_TYPE_INIT,
         to: this.clientId,
@@ -82,12 +84,12 @@ export class Peer extends Observable<any> {
       this.connectedLocal
         ? console.log(` SENDING LOCAL`)
         : this.connectedP2P
-        ? console.log(` SENDING P2P`)
-        : console.log(` SENDING WS`);
+          ? console.log(` SENDING P2P`)
+          : console.log(` SENDING WS`);
     }
 
     if (this.connectedLocal && this.lastPing > Date.now() - 1500) {
-      state.localBroadcastChannel.postMessage(
+      state.localBroadcastChannel?.postMessage(
         JSON.stringify({
           t: BROADCASTCHANNEL_MESSAGE_TYPE_PEER_MESSAGE,
           from: state.ownClientId,
@@ -132,7 +134,7 @@ export class Peer extends Observable<any> {
     const state = window.c.collaboration!;
 
     this.p2p = new SimplePeer({
-      initiator: state.ownClientId > this.clientId,
+      initiator: (state?.ownClientId as string) > this.clientId,
     });
 
     this.p2p.on("data", (data) => {

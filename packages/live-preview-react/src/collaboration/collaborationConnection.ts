@@ -1,3 +1,4 @@
+// @ts-ignore
 import { Observable } from "lib0/observable";
 import { ICollaborationState } from "./types";
 import { base64ToUint8Array } from "./encoding";
@@ -24,7 +25,7 @@ const getSocket = ({ projectId, token, onMessage }) => {
   };
 
   socket.onerror = (error) => {
-    console.error(`WebSocket error: `, error);
+    console.error(`WebSocket error: `, { error });
     document.body.setAttribute("data-collaboration", "Reconnecting");
   };
 
@@ -60,7 +61,7 @@ export const startCollaborationConnection = ({
       p2p: false,
       isAlone: true,
     },
-  } as ICollaborationState;
+  } as unknown as ICollaborationState;
 
   if (typeof window === "undefined") return;
   if (!window.c) {
@@ -145,7 +146,7 @@ export const startCollaborationConnection = ({
         document.body.setAttribute("data-collaboration", "Disconnected");
       };
       state.socket.close();
-      state.socket = null;
+      state.socket = null as any;
     }
   };
 

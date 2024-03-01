@@ -61,6 +61,8 @@ export const ConnectionIndicator: FC = () => {
 
   useEffect(() => {
     if (!initialized) return setInitialized(true);
+    if (!componentRef.current) return;
+
     const oldHeight = componentRef.current.getBoundingClientRect().height;
     const newHeight = HEIGHT_BY_STATE[state];
 

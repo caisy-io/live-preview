@@ -92,7 +92,6 @@ export const Img = ({
           props.placeholderHeight ? `${props.placeholderHeight}` : undefined
         }
         offset={offset}
-        once={true}
       >
         <ImgInner {...props} cover={cover} />
       </LazyLoad>

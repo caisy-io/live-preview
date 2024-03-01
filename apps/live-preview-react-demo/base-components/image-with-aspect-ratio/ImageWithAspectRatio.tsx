@@ -64,7 +64,7 @@ const ImageWithAspectRatio = (props: IImageWithAspectRatioProps) => {
       ratioCalcDiamond={ratioCalcDiamond * 100}
       {...props}
     >
-      <Img src={src} alt={alt} {...props} />
+      <Img alt={alt} {...props} src={src} />
     </SImageWithAspectRatio>
   );
 };

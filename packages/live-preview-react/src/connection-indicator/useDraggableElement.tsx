@@ -1,10 +1,12 @@
-import { MutableRefObject, useCallback, useEffect } from "react";
+import { MutableRefObject, RefObject, useCallback, useEffect } from "react";
 
 export const useDraggableElement = (
-  componentRef: MutableRefObject<HTMLDivElement> | null,
-  dragHandleRef: MutableRefObject<HTMLDivElement> | null
+  componentRef: RefObject<HTMLDivElement>,
+  dragHandleRef: RefObject<HTMLDivElement>
 ) => {
   const dragElement = useCallback(() => {
+    if (!componentRef.current || !dragHandleRef.current) return;
+
     let pos1 = 0,
       pos2 = 0,
       pos3 = 0,

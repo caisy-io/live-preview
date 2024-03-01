@@ -45,6 +45,7 @@ export default function App({ Component, pageProps }) {
   //     setTimeout(forceCheck, 1000);
   //   }
   // }, []);
+
   React.useEffect(() => {
     console.log(` draftMode`, pageProps.draftMode);
     if (!pageProps.draftMode) return;
@@ -65,6 +66,7 @@ export default function App({ Component, pageProps }) {
           }
           return;
         }
+
         const initLivePreview = { init };
 
         function getCookie(key) {

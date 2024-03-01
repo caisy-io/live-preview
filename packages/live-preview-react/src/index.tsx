@@ -143,93 +143,94 @@ export interface ILivePreviewSettings {
   enabled?: boolean;
 }
 
-export const init = (settings: ILivePreviewSettings): (() => void) => {
-  if (typeof window === "undefined") return;
-  const locale = settings.locale || "en";
-  if (globalRef) {
-    globalRef.debug = settings.debug;
+export const init = (settings: ILivePreviewSettings) => {
+  if (typeof window !== "undefined") {
+    const locale = settings.locale || "en";
+    if (globalRef) {
+      globalRef.debug = settings.debug;
+    }
+
+    if (globalStore["defaultlocale"]) {
+      globalStore["defaultlocale"] = locale;
+      globalStore.pubsub.emit("localeChange", [locale]);
+    } else {
+      globalStore["defaultlocale"] = locale;
+    }
+
+    const inpsectMode =
+      settings.enabled && (settings.inspectMode === false ? false : true);
+
+    window.document.body.setAttribute(
+      "data-caisy-inspect-mode",
+      `${inpsectMode}`
+    );
+
+    if (inpsectMode && settings.enabled) {
+      const cleanUpCollab = startCollaborationConnection({
+        projectId: settings.projectId,
+        token: settings.token,
+      });
+      const closeInspectMode = startInspectMode({
+        locale,
+        projectId: settings.projectId,
+      });
+      return () => {
+        closeInspectMode();
+        cleanUpCollab?.();
+      };
+    }
+
+    return () => {};
+    // const sdk = getSdk(
+    //   getRequester({
+    //     token: settings.token,
+    //     endpoint: process.env.NEXT_PUBLIC_CORE_URL,
+    //   })
+    // );
+    // const [localesRes, blueprintRes] = await Promise.all([
+    //   sdk.GetAllDocumentFieldLocale({
+    //     input: {
+    //       projectId: settings.projectId,
+    //     },
+    //   }),
+    //   sdk.GetManyBlueprints({
+    //     input: {
+    //       projectId: settings.projectId,
+    //     },
+    //   }),
+    // ]);
+    // console.log(
+    //   ` localesRes`,
+    //   localesRes.GetAllDocumentFieldLocale.documentFieldLocales
+    // );
+    // console.log(
+    //   ` blueprintRes`,
+    //   blueprintRes.GetManyBlueprints.connection.edges.map((e) => e.node)
+    // );
+    // globalStore.locales =
+    //   localesRes.GetAllDocumentFieldLocale.documentFieldLocales;
+    // globalStore.blueprints = blueprintRes.GetManyBlueprints.connection.edges.map(
+    //   (e) => ({
+    //     name: e.node.name,
+    //     title: e.node.title,
+    //     blueprintId: e.node.blueprintId,
+    //     fields: e.node?.groups?.flatMap((g) => g?.fields).filter((f) => !!f),
+    //   })
+    // );
+    // const key = `hfu_${projectId}${documentId}${field.blueprintFieldId}`;
+
+    // const changeHandler = ({ documentFieldLocaleId, data }) => {
+    //   // here we handle the events from peers that change that edit the same field - here we skip writing to the zustand store to avoid rerenders on every keystroke of the full document
+    //   // with this approach only the single field that is changed should rerender on peer changes
+    //   console.log(`changeHandler documentFieldLocaleId`, documentFieldLocaleId);
+    //   console.log(`changeHandler data`, data);
+    // };
+
+    // window.c.collaboration.pubsub.on(key, changeHandler);
+
+    // console.log(` globalStore["subscribers"]`, globalStore["subscribers"]);
+    // console.log(` window.c.collaboration.pubsub`, window.c.collaboration.pubsub);
   }
-
-  if (globalStore["defaultlocale"]) {
-    globalStore["defaultlocale"] = locale;
-    globalStore.pubsub.emit("localeChange", [locale]);
-  } else {
-    globalStore["defaultlocale"] = locale;
-  }
-
-  const inpsectMode =
-    settings.enabled && (settings.inspectMode === false ? false : true);
-
-  window.document.body.setAttribute(
-    "data-caisy-inspect-mode",
-    `${inpsectMode}`
-  );
-
-  if (inpsectMode && settings.enabled) {
-    const cleanUpCollab = startCollaborationConnection({
-      projectId: settings.projectId,
-      token: settings.token,
-    });
-    const closeInspectMode = startInspectMode({
-      locale,
-      projectId: settings.projectId,
-    });
-    return () => {
-      closeInspectMode();
-      cleanUpCollab();
-    };
-  }
-
-  return () => {};
-  // const sdk = getSdk(
-  //   getRequester({
-  //     token: settings.token,
-  //     endpoint: process.env.NEXT_PUBLIC_CORE_URL,
-  //   })
-  // );
-  // const [localesRes, blueprintRes] = await Promise.all([
-  //   sdk.GetAllDocumentFieldLocale({
-  //     input: {
-  //       projectId: settings.projectId,
-  //     },
-  //   }),
-  //   sdk.GetManyBlueprints({
-  //     input: {
-  //       projectId: settings.projectId,
-  //     },
-  //   }),
-  // ]);
-  // console.log(
-  //   ` localesRes`,
-  //   localesRes.GetAllDocumentFieldLocale.documentFieldLocales
-  // );
-  // console.log(
-  //   ` blueprintRes`,
-  //   blueprintRes.GetManyBlueprints.connection.edges.map((e) => e.node)
-  // );
-  // globalStore.locales =
-  //   localesRes.GetAllDocumentFieldLocale.documentFieldLocales;
-  // globalStore.blueprints = blueprintRes.GetManyBlueprints.connection.edges.map(
-  //   (e) => ({
-  //     name: e.node.name,
-  //     title: e.node.title,
-  //     blueprintId: e.node.blueprintId,
-  //     fields: e.node?.groups?.flatMap((g) => g?.fields).filter((f) => !!f),
-  //   })
-  // );
-  // const key = `hfu_${projectId}${documentId}${field.blueprintFieldId}`;
-
-  // const changeHandler = ({ documentFieldLocaleId, data }) => {
-  //   // here we handle the events from peers that change that edit the same field - here we skip writing to the zustand store to avoid rerenders on every keystroke of the full document
-  //   // with this approach only the single field that is changed should rerender on peer changes
-  //   console.log(`changeHandler documentFieldLocaleId`, documentFieldLocaleId);
-  //   console.log(`changeHandler data`, data);
-  // };
-
-  // window.c.collaboration.pubsub.on(key, changeHandler);
-
-  // console.log(` globalStore["subscribers"]`, globalStore["subscribers"]);
-  // console.log(` window.c.collaboration.pubsub`, window.c.collaboration.pubsub);
 };
 
 /* 

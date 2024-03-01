@@ -7,7 +7,6 @@
     "./getInspectProps": "./src/index.tsx",
     "./init": "./src/index.tsx",
     "./ConnectionIndicator": "./src/connection-indicator/ConnectionIndicator.tsx",
-    "./test": "./src/test.tsx",
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/connection-indicator/styles.css"
   },

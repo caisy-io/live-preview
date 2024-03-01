@@ -42,7 +42,7 @@ export const onPeerMessage = (
 
   // some fake delay
   // debug only
-  if (state.ownClientId > peer.clientId && !hasDelay) {
+  if (state.ownClientId && state?.ownClientId > peer.clientId && !hasDelay) {
     setTimeout(() => {
       onPeerMessage(state, peer, data, true);
     }, 100);
@@ -54,10 +54,10 @@ export const onPeerMessage = (
   window.c.collaboration.incoming_callstack =
     // @ts-ignore
     window.c.collaboration.incoming_callstack || [];
-  PEER_MESSAGE_TYPE_MAP[peerMessageType] &&
+  PEER_MESSAGE_TYPE_MAP[peerMessageType as number] &&
     // @ts-ignore
     window.c.collaboration.incoming_callstack.push(
-      PEER_MESSAGE_TYPE_MAP[peerMessageType]
+      PEER_MESSAGE_TYPE_MAP[peerMessageType as number]
     );
 
   switch (peerMessageType) {

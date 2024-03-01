@@ -1,0 +1,11 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.INTERACTIVE_ELEMENT_PADDING_LEFT = exports.INTERACTIVE_ELEMENT_HEIGHT = exports.POSITIONING_ELEMENT_CLASS = exports.INTERACTIVE_ELEMENT_ID = exports.INTERACTIVE_ELEMENT_CLASS = exports.ACTIVE_LOCALE_NAME_ATTRIBUTE = exports.ACTIVE_FIELD_NAME_ATTRIBUTE = exports.ACTIVE_DOCUMENT_ID_ATTRIBUTE = void 0;
+exports.ACTIVE_DOCUMENT_ID_ATTRIBUTE = "c-lp-adi";
+exports.ACTIVE_FIELD_NAME_ATTRIBUTE = "c-lp-afn";
+exports.ACTIVE_LOCALE_NAME_ATTRIBUTE = "c-lp-aln";
+exports.INTERACTIVE_ELEMENT_CLASS = "caisy-live-preview-edit";
+exports.INTERACTIVE_ELEMENT_ID = "c-lp-ie";
+exports.POSITIONING_ELEMENT_CLASS = "c-lp-pe";
+exports.INTERACTIVE_ELEMENT_HEIGHT = 32;
+exports.INTERACTIVE_ELEMENT_PADDING_LEFT = 5;

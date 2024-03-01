@@ -1,0 +1,9 @@
+export declare const ACTIVE_DOCUMENT_ID_ATTRIBUTE = "c-lp-adi";
+export declare const ACTIVE_FIELD_NAME_ATTRIBUTE = "c-lp-afn";
+export declare const ACTIVE_LOCALE_NAME_ATTRIBUTE = "c-lp-aln";
+export declare const INTERACTIVE_ELEMENT_CLASS = "caisy-live-preview-edit";
+export declare const INTERACTIVE_ELEMENT_ID = "c-lp-ie";
+export declare const POSITIONING_ELEMENT_CLASS = "c-lp-pe";
+export declare const INTERACTIVE_ELEMENT_HEIGHT = 32;
+export declare const INTERACTIVE_ELEMENT_PADDING_LEFT = 5;
+//# sourceMappingURL=constants.d.ts.map
