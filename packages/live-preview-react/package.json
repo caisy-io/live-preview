@@ -1,6 +1,6 @@
 {
   "name": "@repo/live-preview-react",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "exports": {
     "./useCaisyUpdates": "./src/index.tsx",
