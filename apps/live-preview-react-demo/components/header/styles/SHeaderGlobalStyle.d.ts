@@ -1,2 +1,0 @@
-export declare const SHeaderGlobalStyle: import("styled-components").GlobalStyleComponent<import("styled-components").ThemeProps<any>, import("styled-components").DefaultTheme>;
-//# sourceMappingURL=SHeaderGlobalStyle.d.ts.map

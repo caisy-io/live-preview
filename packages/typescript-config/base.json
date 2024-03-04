@@ -28,6 +28,6 @@
     "strictNullChecks": false,
     "noImplicitAny": false,
     "noImplicitThis": false,
-    "noEmitOnError": true
+    "noEmitOnError": true,
   }
 }
