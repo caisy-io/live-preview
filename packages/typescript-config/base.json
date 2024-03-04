@@ -25,10 +25,9 @@
     "noEmit": true,
     "jsx": "preserve",
     "baseUrl": "./",
-    "incremental": true,
     "strictNullChecks": false,
     "noImplicitAny": false,
     "noImplicitThis": false,
-
+    "noEmitOnError": true
   }
 }
