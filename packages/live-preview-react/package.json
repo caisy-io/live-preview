@@ -1,7 +1,7 @@
 {
   "name": "@repo/live-preview-react",
   "version": "1.0.0",
-  "private": false,
+  "private": true,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
     "./useCaisyUpdates": "./src/index.tsx",
