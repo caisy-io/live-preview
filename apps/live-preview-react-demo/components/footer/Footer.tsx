@@ -17,8 +17,8 @@ import { useUniversalText } from "../../provider/universalText";
 import { IGenFooter, IGenMainNavigation } from "../../utils/types_gen";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { useCaisyUpdates } from "@repo/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@repo/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
 import { FooterLegalLink } from "./FooterLegalLink";
 import { FooterNavLink } from "./FooterNavLink";
 

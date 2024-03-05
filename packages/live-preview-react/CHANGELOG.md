@@ -1,4 +1,4 @@
-# @repo/live-preview-react
+# @nicolasshiken/live-preview-react
 
 ## 2.0.0
 

@@ -7,8 +7,8 @@ import { GridItem } from "../../base-components/grid-item/GridItem";
 import { Grid } from "../../base-components/grid/Grid";
 import { SCompImageWithTextButton } from "../comp-image-with-text/styles/SCompImageWithTextButton";
 import { SCompTextBlockButtonWrapper } from "./styles/SCompTextBlockButtonWrapper";
-import { useCaisyUpdates } from "@repo/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@repo/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
 import { Button } from "../button/Button";
 
 export const CompTextBlock: React.FC<

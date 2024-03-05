@@ -6,8 +6,8 @@ import { Text } from "../../text/Text";
 import { SCompFaqItem } from "./styles/SCompFaqItem";
 import { SCompFaqItemTitle } from "./styles/SCompFaqItemTitle";
 import { SCompFaqItemContent } from "./styles/SCompFaqItemContent";
-import { useCaisyUpdates } from "@repo/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@repo/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
 
 export interface ICompFaqItem {
   item: IGenCompFaqItem;

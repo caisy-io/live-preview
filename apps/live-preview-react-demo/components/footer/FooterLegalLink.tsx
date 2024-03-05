@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import Link from "next/link";
-import { useCaisyUpdates } from "@repo/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
 import {
   IGenCompButton,
   IGenCompButtonExternalLinks,

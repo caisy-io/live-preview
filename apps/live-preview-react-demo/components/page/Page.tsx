@@ -8,7 +8,7 @@ import { CompSectionHeader } from "../comp-section-header/CompSectionHeader";
 import { CompTextBlock } from "../comp-text-block/CompTextBlock";
 import { SPage } from "./styles/SPage";
 import { CompVideo } from "../comp-video/CompVideo";
-import { useCaisyUpdates } from "@repo/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
 
 export const Page: React.FC<
   React.PropsWithChildren<IGenPage & { homePageSlug?: string }>

@@ -13,8 +13,8 @@ import { SCompImageWithTextImageSide } from "./styles/SCompImageWithTextImageSid
 import { SCompImageWithTextText } from "./styles/SCompImageWithTextText";
 import { SCompImageWithTextTextSide } from "./styles/SCompImageWithTextTextSide";
 import { SCompImageWithTextTitle } from "./styles/SCompImageWithTextTitle";
-import { useCaisyUpdates } from "@repo/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@repo/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
 import { CompImageWithTextAsset } from "./CompImageWithTextAsset";
 import { Button } from "../button/Button";
 

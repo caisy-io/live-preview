@@ -16,8 +16,8 @@ import { SPageHeaderLocals } from "./styles/SPageHeaderLocals";
 import { SPageHeaderLogo } from "./styles/SPageHeaderLogo";
 import { SPageHeaderLogoContainer } from "./styles/SPageHeaderLogoContainer";
 import { SPageHeaderWrapper } from "./styles/SPageHeaderWrapper";
-import { useCaisyUpdates } from "@repo/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@repo/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
 import { PageHeaderLogo } from "./PageHeaderLogo";
 import { PageHeaderNavLink } from "./PageHeaderNavLink";
 
