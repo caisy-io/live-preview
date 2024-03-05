@@ -8,5 +8,5 @@ module.exports = {
       "assets.staging.caisy.app",
     ],
   },
-  transpilePackages: ["@repo/ui"],
+  transpilePackages: ["@nicolasshiken/live-preview-react"],
 };
