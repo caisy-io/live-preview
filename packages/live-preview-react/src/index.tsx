@@ -40,14 +40,13 @@ export function useCaisyUpdates<T>(
     version: 0,
   });
 
-  // search for id
-  // search for __typename
-  // const typename = (originalData as any)?.__typename;
-  // console.log(` id`, id);
-  // console.log(` typename`, typename);
-  // const key = `${typename}!${id}`;
-
   useEffect(() => {
+    // search for id
+    // search for __typename
+    // const typename = (originalData as any)?.__typename;
+    // console.log(` id`, id);
+    // console.log(` typename`, typename);
+    // const key = `${typename}!${id}`;
     if (!id) return;
     let t: any = null;
 
