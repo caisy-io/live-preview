@@ -13,7 +13,7 @@ const Bronze = css`
   background-color: rgba(0, 140, 255, 0.8);
 
   &:hover {
-    baclground-color: rgba(0, 140, 255, 1);
+    background-color: rgba(0, 140, 255, 1);
   }
 `;
 

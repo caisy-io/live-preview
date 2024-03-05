@@ -1,4 +1,4 @@
-import { RefObject, useCallback, useEffect } from "react";
+import { MutableRefObject, RefObject, useCallback, useEffect } from "react";
 
 export const useDraggableElement = (
   componentRef: RefObject<HTMLDivElement>,

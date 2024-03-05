@@ -1,0 +1,29 @@
+{
+  "name": "@nicolasshiken/live-preview-javascript",
+  "version": "1.0.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "private": false,
+  "author": "nicolasshiken <nicolasshiken@gmail.com>",
+  "exports": {
+    "./useCaisyUpdates": "./src/index.tsx",
+    "./getInspectProps": "./src/index.tsx",
+    "./init": "./src/index.tsx",
+    "./ConnectionIndicator": "./src/connection-indicator/ConnectionIndicator.tsx",
+    "./styles": "./src/inspect/styles.css",
+    "./indicatorStyles": "./src/connection-indicator/styles.css"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@turbo/gen": "^1.11.3",
+    "@types/node": "^20.10.6",
+    "@types/eslint": "^8.56.1",
+    "eslint": "^8.56.0",
+    "typescript": "^5.3.3"
+  }
+}
