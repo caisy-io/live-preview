@@ -1,16 +1,32 @@
 import { createElement } from "../../../live-preview-react/src/helpers/createElement";
 import createCaisyLivePreviewElement from "./createCaisyLivePreviewElement";
 
-const createCaisyLivePreviewElementWrapper = () => {
-  const caisyLivePreviewElement = createCaisyLivePreviewElement();
+type ICreateCaisyLivePreviewElementWrapper = ({
+  children,
+}: {
+  children?: HTMLElement | HTMLElement[];
+}) => HTMLElement;
 
-  const wrapper = createElement({
-    tagName: "div",
-    className: "caisy-live-preview-element-wrapper",
-    children: caisyLivePreviewElement,
-  });
+const createCaisyLivePreviewElementWrapper: ICreateCaisyLivePreviewElementWrapper =
+  ({ children }) => {
+    const childrenContainer = createElement({
+      tagName: "div",
+      children,
+    });
+    const caisyLivePreviewElement = createCaisyLivePreviewElement();
 
-  return wrapper;
-};
+    const previewElementContainer = createElement({
+      tagName: "div",
+      className: "caisy-live-preview-element-wrapper",
+      children: caisyLivePreviewElement,
+    });
+
+    const wrapper = createElement({
+      tagName: "div",
+      children: [previewElementContainer, childrenContainer],
+    });
+
+    return wrapper;
+  };
 
 export default createCaisyLivePreviewElementWrapper;

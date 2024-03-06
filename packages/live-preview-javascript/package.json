@@ -12,7 +12,10 @@
     "./init": "./src/index.tsx",
     "./ConnectionIndicator": "./src/connection-indicator/ConnectionIndicator.tsx",
     "./styles": "./src/inspect/styles.css",
-    "./indicatorStyles": "./src/connection-indicator/styles.css"
+    "./indicatorStyles": "./src/connection-indicator/styles.css",
+    "./livePreviewElementStyles": "./src/live-preview-element/styles.css",
+    "./createLivePreviewElement": "./src/UI/createLivePreviewElementWrapper.ts",
+    "./createConnectionIndicator": "./src/connection-indicator/createConnectionIndicator.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0"
@@ -23,7 +26,10 @@
     "@turbo/gen": "^1.11.3",
     "@types/node": "^20.10.6",
     "@types/eslint": "^8.56.1",
+    "@types/react": "^18.2.46",
+    "@types/react-dom": "^18.2.18",
     "eslint": "^8.56.0",
+    "react": "^18.2.0",
     "typescript": "^5.3.3"
   }
 }
