@@ -11,7 +11,7 @@ import { renderCustomHtmlElements } from "../utils/helpers/renderCustomHtmlEleme
 import "@nicolasshiken/live-preview-react/styles";
 import "@nicolasshiken/live-preview-react/indicatorStyles";
 // import { ConnectionIndicator } from "@nicolasshiken/live-preview-react/ConnectionIndicator";
-import { createConnectionIndicator } from "../../../packages/live-preview-javascript/src/connection-indicator/createConnectionIndicator";
+import { createConnectionIndicator } from "@nicolasshiken/live-preview-javascript/createConnectionIndicator";
 import { init } from "@nicolasshiken/live-preview-react/init";
 
 function hexToRgbA(hex, alpha) {
@@ -273,7 +273,6 @@ export default function App({ Component, pageProps }) {
       {/* <CaisyLivePreviewProvider> */}
       <UniversalTextProvider universalText={pageProps.universalText}>
         <Component {...pageProps} />
-        {/* <ConnectionIndicator /> */}
       </UniversalTextProvider>
       {/* </CaisyLivePreviewProvider> */}
     </>
