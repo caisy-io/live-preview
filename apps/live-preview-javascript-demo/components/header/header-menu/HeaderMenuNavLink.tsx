@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-javascript/useCaisyUpdates";
 import Link from "next/link";
 import { IGenPage } from "../../../utils/types_gen";
 import { SHeaderMenuNavigationElement } from "./styles/SHeaderMenuNavigationElement";

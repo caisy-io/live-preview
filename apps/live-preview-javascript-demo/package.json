@@ -13,7 +13,6 @@
     "@caisy/rich-text-react-renderer": "^0.7.0",
     "@caisy/sdk": "^1.2.16",
     "@nicolasshiken/live-preview-javascript": "*",
-    "@nicolasshiken/live-preview-react": "*",
     "deep-equal": "^2.2.2",
     "graphql": "^15.5.1",
     "html-react-parser": "^3.0.12",

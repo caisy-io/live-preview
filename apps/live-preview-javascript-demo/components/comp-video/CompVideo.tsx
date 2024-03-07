@@ -5,7 +5,7 @@ import { Grid } from "../../base-components/grid/Grid";
 import { IGenVideo } from "../../utils/types_gen";
 import { Video } from "../video/Video";
 import { SCompVideo } from "./styles/SCompVideo";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-javascript/useCaisyUpdates";
 
 export const CompVideo: React.FC<React.PropsWithChildren<IGenVideo>> = ({
   ...props

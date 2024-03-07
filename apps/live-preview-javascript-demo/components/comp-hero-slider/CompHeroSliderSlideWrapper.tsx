@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { IGenCompHeroSliderSlide } from "../../utils/types_gen";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-javascript/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-javascript/getInspectProps";
 import { CompHeroSliderSlide } from "./comp-hero-slider-slide/CompHeroSliderSlide";
 import { SCompHeroSliderPageIndicatorContainer } from "./styles/SCompHeroSliderPageIndicatorContainer";
 import { SCompHeroSliderPageIndicatorLine } from "./styles/SCompHeroSliderPageIndicatorLine";

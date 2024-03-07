@@ -3,7 +3,7 @@ import { SGridPadding } from "../../base-components/grid-padding/styles/SGridPad
 import { SCompFaq } from "./styles/SCompFaq";
 import { IGenCompFaq } from "../../utils/types_gen";
 import { CompFaqItem } from "./comp-faq-item/CompFaqItem";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-javascript/useCaisyUpdates";
 
 export const CompFaq: React.FC<React.PropsWithChildren<IGenCompFaq>> = (
   props

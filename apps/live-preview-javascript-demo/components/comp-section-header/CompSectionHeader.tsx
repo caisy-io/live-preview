@@ -11,8 +11,8 @@ import {
 import { SCompSectionHeader } from "./styles/SCompSectionHeader";
 import { SCompSectionHeaderImage } from "./styles/SCompSectionHeaderImage";
 import { SCompSectionHeaderText } from "./styles/SCompSectionHeaderText";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-javascript/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-javascript/getInspectProps";
 
 export const CompSectionHeader: React.FC<
   React.PropsWithChildren<IGenCompSectionHeader>

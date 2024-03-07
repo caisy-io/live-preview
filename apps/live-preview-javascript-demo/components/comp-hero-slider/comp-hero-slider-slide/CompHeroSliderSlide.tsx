@@ -8,8 +8,8 @@ import { SCompHeroSliderSlideTextContainer } from "./styles/SCompHeroSliderSlide
 import Image from "next/legacy/image";
 import { SCompHeroSliderSlideImage } from "./styles/SCompHeroSliderSlideImage";
 import { SCompHeroSliderSlideBackdrop } from "../styles/SCompHeroSliderSlideBackdrop";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-javascript/useCaisyUpdates";
+import { getInspectProps } from "@nicolasshiken/live-preview-javascript/getInspectProps";
 
 export const CompHeroSliderSlide: React.FC<
   React.PropsWithChildren<
