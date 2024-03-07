@@ -1,4 +1,4 @@
-import { createElement } from "../../../live-preview-react/src/helpers/createElement";
+import { createElement } from "../helpers/createElement";
 
 const createCaisyLivePreviewElement = () => {
   const svg = `

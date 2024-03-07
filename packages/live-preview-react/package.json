@@ -18,6 +18,9 @@
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component"
   },
+  "dependencies": {
+    "@nicolasshiken/live-preview-javascript": "*"
+  },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
