@@ -79,6 +79,12 @@ export const createConnectionIndicator = () => {
 
     content?.classList.add(`--${state.toLowerCase()}`);
 
+    const contentElement = document.querySelector(
+      ".caisy-connection-indicator-content"
+    );
+
+    contentElement.innerHTML = `${iconCaisy} Live Preview ${state}`;
+
     if (description) {
       indicator.appendChild(descriptionElement);
     } else {
