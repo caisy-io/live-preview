@@ -10,9 +10,7 @@
     "./useCaisyUpdates": "./src/index.tsx",
     "./getInspectProps": "./src/index.tsx",
     "./init": "./src/index.tsx",
-    "./ConnectionIndicator": "./src/connection-indicator/ConnectionIndicator.tsx",
-    "./styles": "./src/inspect/styles.css",
-    "./indicatorStyles": "./src/connection-indicator/styles.css"
+    "./ConnectionIndicator": "./src/connection-indicator/ConnectionIndicator.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

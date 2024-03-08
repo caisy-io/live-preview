@@ -6,10 +6,6 @@ import { UniversalTextProvider } from "../provider/universalText";
 import { IPage } from "../utils/types";
 import { IGenAsset } from "../utils/types_gen";
 import { renderCustomHtmlElements } from "../utils/helpers/renderCustomHtmlElements";
-// import "@nicolasshiken/live-preview-react/lib/live-preview/inspect/styles.css";
-// import "@nicolasshiken/live-preview-react/lib/live-preview/connection-indicator/styles.css";
-import "@nicolasshiken/live-preview-react/styles";
-import "@nicolasshiken/live-preview-react/indicatorStyles";
 import { ConnectionIndicator } from "@nicolasshiken/live-preview-react/ConnectionIndicator";
 import { init } from "@nicolasshiken/live-preview-react/init";
 
