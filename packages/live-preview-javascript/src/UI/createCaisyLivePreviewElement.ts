@@ -1,5 +1,7 @@
-export function CaisyIcon() {
-  return (
+import { createElement } from "../helpers/createElement";
+
+const createCaisyLivePreviewElement = () => {
+  const svg = `
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400">
       <path
         d="M168.29 195.46c20.44 25.61 40.2-4.87 8.92-19.3l9.87-.62s27.85 22.22 12.53 36.74c-15.32 14.53-32.54-12.76-32.54-12.76l1.21-4.05z"
@@ -22,5 +24,20 @@ export function CaisyIcon() {
         fill="#ffffff"
       ></path>
     </svg>
-  );
-}
+  `;
+
+  const inner = createElement({
+    tagName: "svg",
+    content: svg,
+  });
+
+  const wrapper = createElement({
+    tagName: "div",
+    className: "caisy-live-preview-element",
+    children: inner,
+  });
+
+  return wrapper;
+};
+
+export default createCaisyLivePreviewElement;
