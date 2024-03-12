@@ -25,7 +25,7 @@
   transition: height cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
   transition: width cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s;
   height: 48px;
-  width: 221px;
+  min-width: 230px;
 }
 
 .caisy-connection-indicator-header {

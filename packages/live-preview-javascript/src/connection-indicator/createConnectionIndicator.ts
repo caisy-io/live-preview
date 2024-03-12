@@ -12,14 +12,14 @@ const DESCRIPTION_BY_STATE = {
 type IConnectionState = "Connected" | "Reconnecting" | "Disconnected";
 
 const WIDTH_BY_STATE = {
-  Connected: 221,
+  Connected: 230,
   Reconnecting: 293,
   Disconnected: 293,
 };
 
 const HEIGHT_BY_STATE = {
   Connected: 48,
-  Reconnecting: 112,
+  Reconnecting: 130,
   Disconnected: 112,
 };
 
