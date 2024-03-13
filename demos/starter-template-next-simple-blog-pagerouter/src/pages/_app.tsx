@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
           return;
         }
 
-        const initLivePreview = { init };
+        const initLivePreview = init;
 
         function getCookie(key) {
           const keyValue = document.cookie.match(
@@ -47,11 +47,11 @@ export default function App({ Component, pageProps }: AppProps) {
           return;
         }
 
-        close = initLivePreview.init({
+        close = initLivePreview({
           projectId: process.env.NEXT_PUBLIC_CAISY_PROJECT_ID as string,
           token,
           locale: router.locale,
-          enabled: pageProps.draftMode || true,
+          enabled: pageProps.draftMode,
           debug,
         });
       })();
