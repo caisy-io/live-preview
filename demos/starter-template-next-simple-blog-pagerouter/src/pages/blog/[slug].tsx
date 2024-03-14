@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ params, draftMode }) => {
     revalidate: 1,
     props: {
       ...(resPage || null),
-      draftMode,
+      draftMode: !!draftMode,
     },
   };
 };

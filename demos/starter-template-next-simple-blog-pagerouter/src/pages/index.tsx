@@ -10,6 +10,6 @@ export const getStaticProps: GetStaticProps<
     params: {
       ...params,
     },
-    draftMode,
+    draftMode: !!draftMode,
   });
 };

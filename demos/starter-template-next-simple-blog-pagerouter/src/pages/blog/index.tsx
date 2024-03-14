@@ -6,6 +6,6 @@ export const getStaticProps = async ({ params, draftMode }) => {
     params: {
       ...params,
     },
-    draftMode,
+    draftMode: !!draftMode,
   });
 };
