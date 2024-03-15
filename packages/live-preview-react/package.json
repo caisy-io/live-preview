@@ -8,9 +8,10 @@
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
     "./useCaisyUpdates": "./src/index.tsx",
-    "./getInspectProps": "./src/index.tsx",
-    "./init": "./src/index.tsx",
-    "./ConnectionIndicator": "./src/connection-indicator/ConnectionIndicator.tsx"
+    "./getCaisyInspectProps": "./src/index.tsx",
+    "./caisyLivePreview": "./src/index.tsx",
+    "./CaisyConnectionIndicator": "./src/caisy-connection-indicator/CaisyConnectionIndicator.tsx",
+    "./getCaisyCookie": "./src/index.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",

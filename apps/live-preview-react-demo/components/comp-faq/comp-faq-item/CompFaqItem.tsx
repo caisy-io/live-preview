@@ -7,7 +7,7 @@ import { SCompFaqItem } from "./styles/SCompFaqItem";
 import { SCompFaqItemTitle } from "./styles/SCompFaqItemTitle";
 import { SCompFaqItemContent } from "./styles/SCompFaqItemContent";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 
 export interface ICompFaqItem {
   item: IGenCompFaqItem;
@@ -26,7 +26,7 @@ export const CompFaqItem: React.FC<React.PropsWithChildren<ICompFaqItem>> = ({
   return (
     <SCompFaqItem>
       <SCompFaqItemTitle
-        {...getInspectProps({
+        {...getCaisyInspectProps({
           id: props.item.id,
           fieldName: "title",
         })}
@@ -36,7 +36,7 @@ export const CompFaqItem: React.FC<React.PropsWithChildren<ICompFaqItem>> = ({
         {item?.id === activeId ? <Dash /> : <Plus />}
       </SCompFaqItemTitle>
       <SCompFaqItemContent
-        {...getInspectProps({
+        {...getCaisyInspectProps({
           id: props.item.id,
           fieldName: "description",
         })}

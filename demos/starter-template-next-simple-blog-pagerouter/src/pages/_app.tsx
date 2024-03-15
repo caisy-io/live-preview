@@ -6,8 +6,9 @@ import { Footer } from "../layouts/Footer";
 import { Navigation } from "../layouts/Navigation";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { init } from "@nicolasshiken/live-preview-react/init";
-import { ConnectionIndicator } from "@nicolasshiken/live-preview-react/ConnectionIndicator";
+import { caisyLivePreview } from "@nicolasshiken/live-preview-react/caisyLivePreview";
+import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react/CaisyConnectionIndicator";
+import { getCaisyCookie } from "@nicolasshiken/live-preview-react/getCaisyCookie";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -33,23 +34,9 @@ export default function App({ Component, pageProps }: AppProps) {
           return;
         }
 
-        const initLivePreview = init;
-
-        function getCookie(key) {
-          const keyValue = document.cookie.match(
-            "(^|;) ?" + key + "=([^;]*)(;|$)"
-          );
-          return keyValue ? keyValue[2] : null;
-        }
-        const token = getCookie("caisy_preview_access_token");
-
-        if (!token || `${token}` === "null" || `${token}` === "undefined") {
-          return;
-        }
-
-        close = initLivePreview({
+        close = caisyLivePreview({
           projectId: process.env.NEXT_PUBLIC_CAISY_PROJECT_ID as string,
-          token,
+          token: getCaisyCookie(),
           locale: router.locale,
           enabled: pageProps.draftMode,
           debug,
@@ -70,7 +57,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* {process.env.NEXT_PUBLIC_SHOW_ONBOARDING_TOAST != "false" && <Toast />} */}
       {pageProps.Navigation && <Navigation {...pageProps.Navigation} />}
       <Component {...pageProps} />
-      <ConnectionIndicator />
+      <CaisyConnectionIndicator />
       {pageProps.Footer && <Footer {...pageProps.Footer} />}
     </>
   );

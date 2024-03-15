@@ -1,13 +1,13 @@
-import { createConnectionIndicator } from "@nicolasshiken/live-preview-javascript/createConnectionIndicator";
+import { createCaisyConnectionIndicator } from "@nicolasshiken/live-preview-javascript/createCaisyConnectionIndicator";
 import { FC, useEffect } from "react";
 import "@nicolasshiken/live-preview-javascript/indicatorStyles";
 import "@nicolasshiken/live-preview-javascript/styles";
 
-export const ConnectionIndicator: FC = () => {
+export const CaisyConnectionIndicator: FC = () => {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    const { observer, connectionIndicator } = createConnectionIndicator();
+    const { observer, connectionIndicator } = createCaisyConnectionIndicator();
 
     document.body.append(connectionIndicator);
 

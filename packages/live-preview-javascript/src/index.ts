@@ -17,7 +17,7 @@ if (!globalStore["pubsub"]) {
   globalStore["pubsub"] = createPubSub();
 }
 
-export const getInspectProps = ({
+export const getCaisyInspectProps = ({
   id,
   fieldName,
   disabled,
@@ -36,8 +36,6 @@ export const getInspectProps = ({
   };
 };
 
-export const getCaisyInspectProps = getInspectProps;
-
 export interface ILivePreviewSettings {
   projectId: string;
   token: string;
@@ -48,8 +46,20 @@ export interface ILivePreviewSettings {
   enabled?: boolean;
 }
 
-export const init = (settings: ILivePreviewSettings) => {
+export const getCaisyCookie = () => {
+  const key = "caisy_preview_access_token";
+  const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
+  return keyValue ? keyValue[2] : null;
+};
+
+export const caisyLivePreview = (settings: ILivePreviewSettings) => {
   if (typeof window !== "undefined") {
+    const { token } = settings;
+
+    if (!token || `${token}` === "null" || `${token}` === "undefined") {
+      return;
+    }
+
     const locale = settings.locale || "en";
     if (globalRef) {
       globalRef.debug = settings.debug;

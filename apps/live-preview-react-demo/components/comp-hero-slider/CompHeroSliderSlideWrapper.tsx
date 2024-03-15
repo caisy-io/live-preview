@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 import { IGenCompHeroSliderSlide } from "../../utils/types_gen";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 import { CompHeroSliderSlide } from "./comp-hero-slider-slide/CompHeroSliderSlide";
 import { SCompHeroSliderPageIndicatorContainer } from "./styles/SCompHeroSliderPageIndicatorContainer";
 import { SCompHeroSliderPageIndicatorLine } from "./styles/SCompHeroSliderPageIndicatorLine";
@@ -50,7 +50,7 @@ export const CompHeroSliderSlideWrapper: React.FC<
         }}
       >
         <SCompHeroSliderPageIndicatorTitle
-          {...getInspectProps({ id: slide.id, fieldName: "headline" })}
+          {...getCaisyInspectProps({ id: slide.id, fieldName: "headline" })}
           transitionFrom={index === transitionFromSlide}
           active={index === activeSlide}
         >

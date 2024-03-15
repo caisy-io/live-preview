@@ -12,7 +12,7 @@ import { SCompSectionHeader } from "./styles/SCompSectionHeader";
 import { SCompSectionHeaderImage } from "./styles/SCompSectionHeaderImage";
 import { SCompSectionHeaderText } from "./styles/SCompSectionHeaderText";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 
 export const CompSectionHeader: React.FC<
   React.PropsWithChildren<IGenCompSectionHeader>
@@ -34,7 +34,7 @@ export const CompSectionHeader: React.FC<
   return (
     <SCompSectionHeader>
       <SCompSectionHeaderImage
-        {...getInspectProps({ id, fieldName: "image" })}
+        {...getCaisyInspectProps({ id, fieldName: "image" })}
         dominantColor={_image?.dominantColor}
       >
         {/* {_video ? (
@@ -53,7 +53,9 @@ export const CompSectionHeader: React.FC<
         </>
         {/* )} */}
       </SCompSectionHeaderImage>
-      <SCompSectionHeaderText {...getInspectProps({ id, fieldName: "title" })}>
+      <SCompSectionHeaderText
+        {...getCaisyInspectProps({ id, fieldName: "title" })}
+      >
         {title ?? ""}
       </SCompSectionHeaderText>
     </SCompSectionHeader>

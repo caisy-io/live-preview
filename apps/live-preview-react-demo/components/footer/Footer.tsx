@@ -18,7 +18,7 @@ import { IGenFooter, IGenMainNavigation } from "../../utils/types_gen";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 import { FooterLegalLink } from "./FooterLegalLink";
 import { FooterNavLink } from "./FooterNavLink";
 
@@ -59,7 +59,7 @@ export const Footer: React.FC<
             <SFooterSections>
               {mainNavigation && (
                 <SFooterMainNavigation
-                  {...getInspectProps({
+                  {...getCaisyInspectProps({
                     id: navigation.id,
                     fieldName: "mainNavigation",
                   })}
@@ -87,7 +87,7 @@ export const Footer: React.FC<
                 ))}
               </SFooterSectionLocales>
               <SFooterLegalSection
-                {...getInspectProps({
+                {...getCaisyInspectProps({
                   id: footer.id,
                   fieldName: "legalSection",
                 })}

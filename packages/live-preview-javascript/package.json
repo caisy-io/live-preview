@@ -9,10 +9,11 @@
   "exports": {
     "./getInspectProps": "./src/index.ts",
     "./getCaisyInspectProps": "./src/index.ts",
-    "./init": "./src/index.ts",
+    "./getCaisyCookie": "./src/index.ts",
+    "./caisyLivePreview": "./src/index.ts",
     "./styles": "./src/inspect/styles.css",
-    "./indicatorStyles": "./src/connection-indicator/styles.css",
-    "./createConnectionIndicator": "./src/connection-indicator/createConnectionIndicator.ts"
+    "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
+    "./createCaisyConnectionIndicator": "./src/caisy-connection-indicator/createCaisyConnectionIndicator.ts"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0"

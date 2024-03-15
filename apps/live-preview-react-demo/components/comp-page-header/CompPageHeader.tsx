@@ -17,7 +17,7 @@ import { SCompPageHeaderHeadlineWrapper } from "./styles/SCompPageHeaderHeadline
 import { Video } from "../video/Video";
 import { SCompPageHeaderBackdropShadow } from "./styles/SCompPageHeaderBackdropShadow";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 
 export const CompPageHeader: React.FC<
   React.PropsWithChildren<IGenCompPageHeader>
@@ -69,7 +69,7 @@ export const CompPageHeader: React.FC<
                 silver={{ start: 3, end: 8 }}
               >
                 <SCompPageHeaderHeadline
-                  {...getInspectProps({
+                  {...getCaisyInspectProps({
                     id: props.id,
                     fieldName: "headline",
                   })}

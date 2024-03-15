@@ -2,9 +2,9 @@ import { createPubSub } from "./pubsub";
 import { useEffect, useRef, useState } from "react";
 import cloneDeep from "lodash/cloneDeep";
 import deepEqual from "deep-equal";
-export { init } from "@nicolasshiken/live-preview-javascript/init";
+export { caisyLivePreview } from "@nicolasshiken/live-preview-javascript/caisyLivePreview";
 export { getCaisyInspectProps } from "@nicolasshiken/live-preview-javascript/getCaisyInspectProps";
-export { getInspectProps } from "@nicolasshiken/live-preview-javascript/getInspectProps";
+export { getCaisyCookie } from "@nicolasshiken/live-preview-javascript/getCaisyCookie";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
