@@ -1,8 +1,7 @@
 import { RichTextRenderer } from "@caisy/rich-text-react-renderer";
 import { CenterContainer } from "../CenterContainer";
 import { DocumentLink } from "./overwrites/DocumentLink";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 
 interface IFullText {
   text?: any;
@@ -10,13 +9,13 @@ interface IFullText {
 }
 
 export const FullText: React.FC<IFullText> = (props) => {
-  const { text } = useCaisyUpdates({ ...props });
+  const { text } = props;
 
   return (
     <CenterContainer>
       <article
         {...(text?.json?.content &&
-          getInspectProps({
+          getCaisyInspectProps({
             id: props?.id,
             fieldName: "text",
           }))}

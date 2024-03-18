@@ -17,7 +17,7 @@ import { SPageHeaderLogo } from "./styles/SPageHeaderLogo";
 import { SPageHeaderLogoContainer } from "./styles/SPageHeaderLogoContainer";
 import { SPageHeaderWrapper } from "./styles/SPageHeaderWrapper";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 import { PageHeaderLogo } from "./PageHeaderLogo";
 import { PageHeaderNavLink } from "./PageHeaderNavLink";
 
@@ -87,7 +87,7 @@ export const PageHeader: React.FC<
     <SPageHeader whiteMode={whiteMode}>
       <SPageHeaderLogo
         whiteMode={whiteMode}
-        {...getInspectProps({
+        {...getCaisyInspectProps({
           id: navigation.id,
           fieldName: "logo",
         })}
@@ -130,7 +130,7 @@ export const PageHeader: React.FC<
         </SPageHeaderWrapper>
         <SPageHeaderLinksContainer
           whiteMode={whiteMode}
-          {...getInspectProps({
+          {...getCaisyInspectProps({
             id: navigation.id,
             fieldName: "mainNavigation",
           })}

@@ -14,7 +14,7 @@ import { SCompImageWithTextText } from "./styles/SCompImageWithTextText";
 import { SCompImageWithTextTextSide } from "./styles/SCompImageWithTextTextSide";
 import { SCompImageWithTextTitle } from "./styles/SCompImageWithTextTitle";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 import { CompImageWithTextAsset } from "./CompImageWithTextAsset";
 import { Button } from "../button/Button";
 
@@ -37,7 +37,7 @@ export const CompImageWithText: React.FC<
               imageRightInsteadOfLeft={!!imageRightInsteadOfLeft}
             >
               <SCompImageWithTextImageSide
-                {...getInspectProps({
+                {...getCaisyInspectProps({
                   id,
                   fieldName: "asset",
                 })}
@@ -49,7 +49,7 @@ export const CompImageWithText: React.FC<
                 imageRightInsteadOfLeft={!!imageRightInsteadOfLeft}
               >
                 <SCompImageWithTextTitle
-                  {...getInspectProps({
+                  {...getCaisyInspectProps({
                     id,
                     fieldName: "strap",
                   })}
@@ -58,7 +58,7 @@ export const CompImageWithText: React.FC<
                 </SCompImageWithTextTitle>
 
                 <SCompImageWithTextHeadline
-                  {...getInspectProps({
+                  {...getCaisyInspectProps({
                     id,
                     fieldName: "headline",
                   })}
@@ -67,7 +67,7 @@ export const CompImageWithText: React.FC<
                 </SCompImageWithTextHeadline>
 
                 <SCompImageWithTextText
-                  {...getInspectProps({
+                  {...getCaisyInspectProps({
                     id,
                     fieldName: "text",
                   })}
@@ -78,7 +78,7 @@ export const CompImageWithText: React.FC<
                 <SCompImageWithTextButtonWrapper
                   {...(buttons &&
                     buttons.length >= 1 &&
-                    getInspectProps({ id, fieldName: "buttons" }))}
+                    getCaisyInspectProps({ id, fieldName: "buttons" }))}
                 >
                   {buttons?.map((button, index) => {
                     const buttonStyle: string = (button as any)?.style;

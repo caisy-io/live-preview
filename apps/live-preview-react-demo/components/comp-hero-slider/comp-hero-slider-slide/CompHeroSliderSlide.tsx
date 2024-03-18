@@ -9,7 +9,7 @@ import Image from "next/legacy/image";
 import { SCompHeroSliderSlideImage } from "./styles/SCompHeroSliderSlideImage";
 import { SCompHeroSliderSlideBackdrop } from "../styles/SCompHeroSliderSlideBackdrop";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getInspectProps } from "@nicolasshiken/live-preview-react/getInspectProps";
+import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
 
 export const CompHeroSliderSlide: React.FC<
   React.PropsWithChildren<
@@ -46,13 +46,13 @@ export const CompHeroSliderSlide: React.FC<
       <SCompHeroSliderSlideTextContainer>
         {headline && (
           <SCompHeroSliderSlideHeadline
-            {...getInspectProps({ id: props.id, fieldName: "headline" })}
+            {...getCaisyInspectProps({ id: props.id, fieldName: "headline" })}
           >
             {headline}
           </SCompHeroSliderSlideHeadline>
         )}
         <SCompHeroSliderSlideText
-          {...getInspectProps({ id: props.id, fieldName: "text" })}
+          {...getCaisyInspectProps({ id: props.id, fieldName: "text" })}
         >
           {text?.json?.content && (
             <RichText content={text.json.content}></RichText>

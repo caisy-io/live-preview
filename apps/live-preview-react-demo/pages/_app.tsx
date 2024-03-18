@@ -6,8 +6,9 @@ import { UniversalTextProvider } from "../provider/universalText";
 import { IPage } from "../utils/types";
 import { IGenAsset } from "../utils/types_gen";
 import { renderCustomHtmlElements } from "../utils/helpers/renderCustomHtmlElements";
-import { ConnectionIndicator } from "@nicolasshiken/live-preview-react/ConnectionIndicator";
-import { init } from "@nicolasshiken/live-preview-react/init";
+import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react/CaisyConnectionIndicator";
+import { caisyLivePreview } from "@nicolasshiken/live-preview-react/caisyLivePreview";
+import { getCaisyCookie } from "@nicolasshiken/live-preview-react/getCaisyCookie";
 
 function hexToRgbA(hex, alpha) {
   let c;
@@ -63,23 +64,9 @@ export default function App({ Component, pageProps }) {
           return;
         }
 
-        const initLivePreview = { init };
-
-        function getCookie(key) {
-          const keyValue = document.cookie.match(
-            "(^|;) ?" + key + "=([^;]*)(;|$)"
-          );
-          return keyValue ? keyValue[2] : null;
-        }
-        const token = getCookie("caisy_preview_access_token");
-
-        if (!token || `${token}` === "null" || `${token}` === "undefined") {
-          return;
-        }
-
-        close = initLivePreview.init({
+        close = caisyLivePreview({
           projectId: process.env.NEXT_PUBLIC_CAISY_PROJECT_ID as string,
-          token,
+          token: getCaisyCookie(),
           locale: router.locale,
           enabled: pageProps.draftMode,
           debug,
@@ -254,7 +241,7 @@ export default function App({ Component, pageProps }) {
       {/* <CaisyLivePreviewProvider> */}
       <UniversalTextProvider universalText={pageProps.universalText}>
         <Component {...pageProps} />
-        <ConnectionIndicator />
+        <CaisyConnectionIndicator />
       </UniversalTextProvider>
       {/* </CaisyLivePreviewProvider> */}
     </>
