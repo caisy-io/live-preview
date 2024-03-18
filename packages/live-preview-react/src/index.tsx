@@ -3,7 +3,6 @@ import { useEffect, useRef, useState } from "react";
 import cloneDeep from "lodash/cloneDeep";
 import deepEqual from "deep-equal";
 import set from "lodash/set";
-import get from "lodash/get";
 export { caisyLivePreview } from "@nicolasshiken/live-preview-javascript/caisyLivePreview";
 export { getCaisyInspectProps } from "@nicolasshiken/live-preview-javascript/getCaisyInspectProps";
 export { getCaisyCookie } from "@nicolasshiken/live-preview-javascript/getCaisyCookie";
@@ -53,8 +52,6 @@ export function useCaisyUpdates<T>(
         newState.data[update.localeApiName] = cloneDeep(originalData);
       }
 
-      console.log({ update });
-
       if (update.fieldType === "richtext") {
         set(
           newState.data[update.localeApiName],
@@ -72,24 +69,6 @@ export function useCaisyUpdates<T>(
       }
 
       setState({ ...newState, version: state.version + 1 });
-
-      // setState((prev) => {
-      //   if (!prev.data[update.localeApiName]) {
-      //     prev.data[update.localeApiName] = cloneDeep(originalData);
-      //   }
-
-      //   if (update.fieldType === "richtext") {
-      //     prev.data[update.localeApiName][update.fieldName] = {
-      //       json: update.value,
-      //     };
-      //   } else if (update.fieldType === "connection") {
-      //     window.location.reload();
-      //   } else {
-      //     prev.data[update.localeApiName][update.fieldName] = update.value;
-      //   }
-
-      // return { data: prev.data, version: state.version + 1 };
-      // });
     };
 
     const recursivelySubscribeToComponents = (data, key) => {

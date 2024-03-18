@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   const liveProps = useCaisyUpdates(pageProps);
 
   useEffect(() => {
-    console.log(` draftMode`, pageProps.draftMode);
+    // console.log(` draftMode`, pageProps.draftMode);
     if (!pageProps.draftMode) return;
 
     if (typeof window != "undefined") {
