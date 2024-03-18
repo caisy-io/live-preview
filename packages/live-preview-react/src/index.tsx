@@ -5,7 +5,7 @@ import deepEqual from "deep-equal";
 import set from "lodash/set";
 export { caisyLivePreview } from "@nicolasshiken/live-preview-javascript/caisyLivePreview";
 export { getCaisyInspectProps } from "@nicolasshiken/live-preview-javascript/getCaisyInspectProps";
-export { getCaisyCookie } from "@nicolasshiken/live-preview-javascript/getCaisyCookie";
+export { getCaisyToken } from "@nicolasshiken/live-preview-javascript/getCaisyToken";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||

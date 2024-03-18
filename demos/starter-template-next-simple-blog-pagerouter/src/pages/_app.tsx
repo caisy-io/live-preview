@@ -8,13 +8,15 @@ import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { caisyLivePreview } from "@nicolasshiken/live-preview-react/caisyLivePreview";
 import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react/CaisyConnectionIndicator";
-import { getCaisyCookie } from "@nicolasshiken/live-preview-react/getCaisyCookie";
+import { getCaisyToken } from "@nicolasshiken/live-preview-react/getCaisyToken";
 import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
 
   const liveProps = useCaisyUpdates(pageProps);
+
+  console.log({ pageProps });
 
   useEffect(() => {
     // console.log(` draftMode`, pageProps.draftMode);
@@ -39,7 +41,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         close = caisyLivePreview({
           projectId: process.env.NEXT_PUBLIC_CAISY_PROJECT_ID as string,
-          token: getCaisyCookie(),
+          token: getCaisyToken(),
           locale: router.locale,
           enabled: pageProps.draftMode,
           debug,
