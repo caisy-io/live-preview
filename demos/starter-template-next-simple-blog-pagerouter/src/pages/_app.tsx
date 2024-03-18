@@ -9,9 +9,12 @@ import { useRouter } from "next/router";
 import { caisyLivePreview } from "@nicolasshiken/live-preview-react/caisyLivePreview";
 import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react/CaisyConnectionIndicator";
 import { getCaisyCookie } from "@nicolasshiken/live-preview-react/getCaisyCookie";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
+
+  const liveProps = useCaisyUpdates(pageProps);
 
   useEffect(() => {
     console.log(` draftMode`, pageProps.draftMode);
@@ -55,10 +58,10 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width" />
       </Head>
       {/* {process.env.NEXT_PUBLIC_SHOW_ONBOARDING_TOAST != "false" && <Toast />} */}
-      {pageProps.Navigation && <Navigation {...pageProps.Navigation} />}
-      <Component {...pageProps} />
+      {liveProps.Navigation && <Navigation {...liveProps.Navigation} />}
+      <Component {...liveProps} />
       <CaisyConnectionIndicator />
-      {pageProps.Footer && <Footer {...pageProps.Footer} />}
+      {liveProps.Footer && <Footer {...liveProps.Footer} />}
     </>
   );
 }
