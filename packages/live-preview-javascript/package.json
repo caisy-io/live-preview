@@ -9,7 +9,7 @@
   "exports": {
     "./getInspectProps": "./src/index.ts",
     "./getCaisyInspectProps": "./src/index.ts",
-    "./getCaisyCookie": "./src/index.ts",
+    "./getCaisyToken": "./src/index.ts",
     "./caisyLivePreview": "./src/index.ts",
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",

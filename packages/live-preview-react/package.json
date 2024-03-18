@@ -11,7 +11,7 @@
     "./getCaisyInspectProps": "./src/index.tsx",
     "./caisyLivePreview": "./src/index.tsx",
     "./CaisyConnectionIndicator": "./src/caisy-connection-indicator/CaisyConnectionIndicator.tsx",
-    "./getCaisyCookie": "./src/index.tsx"
+    "./getCaisyToken": "./src/index.tsx"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
