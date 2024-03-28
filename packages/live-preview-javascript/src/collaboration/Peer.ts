@@ -1,4 +1,8 @@
-import * as SimplePeer from "simple-peer";
+// import * as SimplePeer from "simple-peer";
+// const SimplePeer = require("simple-peer").default;
+// import SimplePeer.default from "simple-peer"
+
+import { default as SimplePeer } from "simple-peer";
 // @ts-ignore
 import { Observable } from "lib0/observable";
 
@@ -134,7 +138,7 @@ export class Peer extends Observable<any> {
     const state = window.c.collaboration!;
 
     this.p2p = new SimplePeer({
-      initiator: (state?.ownClientId as string) > this.clientId,
+      initiator: (state?.ownClientId as string) > this.clientId || true,
     });
 
     this.p2p.on("data", (data) => {

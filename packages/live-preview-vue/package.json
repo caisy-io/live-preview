@@ -18,6 +18,9 @@
   },
   "dependencies": {
     "@nicolasshiken/live-preview-javascript": "*",
+    "@vue/tsconfig": "^0.5.1",
+    "deep-equal": "^2.2.3",
+    "lodash": "^4.17.21",
     "vue": "^3.4.21"
   },
   "devDependencies": {

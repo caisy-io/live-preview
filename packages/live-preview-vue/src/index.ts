@@ -5,7 +5,7 @@ import set from "lodash/set";
 export { caisyLivePreview } from "@nicolasshiken/live-preview-javascript/caisyLivePreview";
 export { getCaisyInspectProps } from "@nicolasshiken/live-preview-javascript/getCaisyInspectProps";
 export { getCaisyCookie } from "@nicolasshiken/live-preview-javascript/getCaisyCookie";
-import { ref, watchEffect } from "vue";
+import { onMounted, ref } from "vue";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -26,7 +26,7 @@ export function useCaisyUpdates<T>(
   originalData: T,
   options?: { locale?: string }
 ): T {
-  const orgRef = ref(originalData);
+  // const orgRef = ref(originalData);
   const { locale } = options || {};
 
   const activeLocale = ref(locale || globalStore["defaultlocale"] || "en");
@@ -40,8 +40,11 @@ export function useCaisyUpdates<T>(
     version: 0,
   });
 
-  watchEffect(() => {
-    const onUpdate = (update, key) => {
+  // watchEffect(() => {
+  // console.log("watchEffect: ", { originalData });
+  onMounted(() => {
+    const onUpdate = (update: any, key: string | null) => {
+      console.log("udpate");
       const newState = {
         data: { [localeKey.value]: { ...originalData } },
         version: 0,
@@ -70,7 +73,10 @@ export function useCaisyUpdates<T>(
       state.value = { ...newState, version: state.value.version + 1 };
     };
 
-    const recursivelySubscribeToComponents = (data, key) => {
+    const recursivelySubscribeToComponents = (
+      data: any,
+      key: string | null
+    ) => {
       if (typeof data !== "object") {
         return;
       }
@@ -80,7 +86,7 @@ export function useCaisyUpdates<T>(
       });
 
       componentNames.forEach((componentName) => {
-        globalStore.pubsub.on(data[componentName].id, (update) =>
+        globalStore.pubsub.on(data[componentName].id, (update: any) =>
           onUpdate(update, key ? `${key}.${componentName}` : `${componentName}`)
         );
       });
@@ -96,35 +102,36 @@ export function useCaisyUpdates<T>(
     };
 
     recursivelySubscribeToComponents(originalData, null);
+    // });
   });
 
-  watchEffect(() => {
-    if (deepEqual(originalData, orgRef.value)) {
-      return;
-    }
-    orgRef.value = originalData;
-    state.value = {
-      data: {
-        [localeKey.value]: cloneDeep(originalData),
-      },
-      version: 0,
-    };
-  });
+  // onMounted(() => {
+  //   if (deepEqual(originalData, orgRef.value)) {
+  //     return;
+  //   }
+  //   orgRef.value = originalData;
+  //   state.value = {
+  //     data: {
+  //       [localeKey.value]: cloneDeep(originalData),
+  //     },
+  //     version: 0,
+  //   };
+  // });
 
-  watchEffect(() => {
-    if (locale) {
-      return;
-    }
-    const onLocaleChange = (newLocale) => {
-      activeLocale.value = newLocale;
-    };
+  //   watchEffect(() => {
+  //     if (locale) {
+  //       return;
+  //     }
+  //     const onLocaleChange = (newLocale) => {
+  //       activeLocale.value = newLocale;
+  //     };
 
-    globalStore.pubsub.on("localeChange", onLocaleChange);
+  //     globalStore.pubsub.on("localeChange", onLocaleChange);
 
-    return () => {
-      globalStore.pubsub.off("localeChange", onLocaleChange);
-    };
-  });
+  //     return () => {
+  //       globalStore.pubsub.off("localeChange", onLocaleChange);
+  //     };
+  //   });
 
   return state.value.data[localeKey.value] || originalData;
 }

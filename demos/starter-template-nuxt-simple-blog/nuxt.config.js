@@ -8,6 +8,11 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  vite: {
+    define: {
+      global: "window",
+    },
+  },
   modules: [
     ["@nuxtjs/robots", robotsConfig],
     ["@funken-studio/sitemap-nuxt-3"],
@@ -24,4 +29,5 @@ export default defineNuxtConfig({
       showOnboardingToast: process.env.SHOW_ONBOARDING_TOAST ?? true,
     },
   },
+  transpile: ["@nicolasshiken/live-preview-vue"],
 });

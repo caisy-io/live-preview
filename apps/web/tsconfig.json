@@ -6,7 +6,8 @@
         "name": "next"
       }
     ],
-    "incremental": true
+    "incremental": true,
+    "jsx": "preserve"
   },
   "include": [
     "next-env.d.ts",
