@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publishConfig": {
     "access": "public"
   },
@@ -11,7 +11,7 @@
     "./getCaisyInspectProps": "./dist/index.js",
     "./getCaisyToken": "./dist/index.js",
     "./caisyLivePreview": "./dist/index.js",
-    "./createCaisyConnectionIndicator": "./dist/caisy-connection-indicator/createCaisyConnectionIndicator.js",
+    "./createCaisyConnectionIndicator": "./dist/index.js",
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css"
   },
