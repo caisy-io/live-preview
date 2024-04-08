@@ -1,16 +1,13 @@
 {
   "name": "@nicolasshiken/live-preview-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
-    "./useCaisyUpdates": "./src/dist/index.js",
-    "./getCaisyInspectProps": "./src/dist/index.js",
-    "./caisyLivePreview": "./src/dist/index.js",
-    "./getCaisyToken": "./src/dist/index.js"
+    ".": "./dist/index.js"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -18,7 +15,7 @@
     "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "dependencies": {
-    "@nicolasshiken/live-preview-javascript": "*",
+    "@nicolasshiken/live-preview-javascript": "^1.0.10",
     "@swc/core": "^1.4.11",
     "tsup": "^8.0.2"
   },
