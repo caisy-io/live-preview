@@ -1,17 +1,12 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
-    "./getInspectProps": "./src/dist/index.js",
-    "./getCaisyInspectProps": "./src/dist/index.js",
-    "./getCaisyToken": "./src/dist/index.js",
-    "./caisyLivePreview": "./src/dist/index.js",
-    "./createCaisyConnectionIndicator": "./src/dist/index.js",
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css"
   },
