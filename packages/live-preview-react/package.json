@@ -1,35 +1,40 @@
 {
   "name": "@nicolasshiken/live-preview-react",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
-    "./useCaisyUpdates": "./src/index.tsx",
-    "./getCaisyInspectProps": "./src/index.tsx",
-    "./caisyLivePreview": "./src/index.tsx",
-    "./CaisyConnectionIndicator": "./src/caisy-connection-indicator/CaisyConnectionIndicator.tsx",
-    "./getCaisyToken": "./src/index.tsx"
+    "./useCaisyUpdates": "./src/dist/index.js",
+    "./getCaisyInspectProps": "./src/dist/index.js",
+    "./caisyLivePreview": "./src/dist/index.js",
+    "./getCaisyToken": "./src/dist/index.js"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "generate:component": "turbo gen react-component"
+    "generate:component": "turbo gen react-component",
+    "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "dependencies": {
-    "@nicolasshiken/live-preview-javascript": "*"
+    "@nicolasshiken/live-preview-javascript": "1.0.3",
+    "@swc/core": "^1.4.11",
+    "tsup": "^8.0.2"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@turbo/gen": "^1.11.3",
-    "@types/node": "^20.10.6",
     "@types/eslint": "^8.56.1",
+    "@types/node": "^20.10.6",
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "eslint": "^8.56.0",
     "react": "^18.2.0",
     "typescript": "^5.3.3"
-  }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts"
 }
