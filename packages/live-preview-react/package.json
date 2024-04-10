@@ -1,9 +1,10 @@
 {
   "name": "@nicolasshiken/live-preview-react",
-  "version": "1.0.22",
+  "version": "1.0.24",
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
