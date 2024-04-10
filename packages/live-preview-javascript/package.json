@@ -1,9 +1,10 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.21",
+  "version": "1.0.23",
   "publishConfig": {
     "access": "public"
   },
+  "type": "module",
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
