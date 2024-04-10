@@ -1,21 +1,19 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.27",
+  "version": "1.0.29",
   "publishConfig": {
     "access": "public"
   },
-  "type": "module",
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
-    ".": "./dist/index.js",
-    "./createCaisyConnectionIndicator": "./dist/caisy-connection-indicator/createCaisyConnectionIndicator.js"
+    ".": "./dist/index.js"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "build": "tsup src/index.ts src/caisy-connection-indicator/createCaisyConnectionIndicator.ts --format cjs,esm --dts"
+    "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
