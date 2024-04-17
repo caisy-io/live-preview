@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.53",
+  "version": "1.0.55",
   "publishConfig": {
     "access": "public"
   },
