@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.51",
+  "version": "1.0.53",
   "publishConfig": {
     "access": "public"
   },
@@ -12,8 +12,7 @@
     ".": "./dist/index.js"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0",
-    "build": "tsup src/index.ts --format cjs,esm --dts"
+    "lint": "eslint . --max-warnings 0"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
