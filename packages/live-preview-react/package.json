@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-react",
-  "version": "1.0.56",
+  "version": "1.0.58",
   "publishConfig": {
     "access": "public"
   },
@@ -15,8 +15,7 @@
     "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "dependencies": {
-    "@swc/core": "^1.4.11",
-    "tsup": "^8.0.2"
+    "@swc/core": "^1.4.11"
   },
   "peerDependencies": {
     "@nicolasshiken/live-preview-javascript": "*",
