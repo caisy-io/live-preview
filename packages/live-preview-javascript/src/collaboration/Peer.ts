@@ -1,8 +1,8 @@
-import * as SimplePeer from "simple-peer";
+import SimplePeer from "simple-peer";
 // @ts-ignore
 import { Observable } from "lib0/observable";
 
-import router from "next/router";
+// import router from "next/router";
 import {
   PEER_MESSAGE_TYPE_FIELD_SUBSCRIBE_ON,
   PEER_MESSAGE_TYPE_ACTIVE_DOCUMENT_CHANGE,
@@ -65,7 +65,8 @@ export class Peer extends Observable<any> {
     this.send(
       encodeAnyJSONMessage({
         messageType: PEER_MESSAGE_TYPE_ACTIVE_URL,
-        body: { asPath: router.asPath },
+        // body: { asPath: router.asPath },
+        body: { asPath: "/" },
       })
     );
 

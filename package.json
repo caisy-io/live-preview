@@ -1,9 +1,6 @@
 {
   "name": "live-preview-base",
   "private": true,
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
