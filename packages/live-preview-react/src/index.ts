@@ -23,7 +23,7 @@ if (!globalStore["pubsub"]) {
 
 export function useCaisyUpdates<T>(
   originalData: T,
-  options?: { locale?: string }
+  options?: { locale?: string, richtextV2?: boolean }
 ): T {
   const orgRef = React.useRef(originalData);
   const { locale } = options || {};
@@ -52,9 +52,10 @@ export function useCaisyUpdates<T>(
       }
 
       if (update.fieldType === "richtext") {
+        const richtextKey = options?.richtextV2 ? `${key}.${update.fieldName}` : `${key}.${update.fieldName}.json`;
         set(
           newState.data[update.localeApiName],
-          `${key}.${update.fieldName}.json`,
+          richtextKey,
           update.value
         );
       } else if (update.fieldType === "connection") {
