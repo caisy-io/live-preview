@@ -3,8 +3,8 @@ import React from "react";
 import cloneDeep from "lodash/cloneDeep";
 import isEqual from "lodash/isEqual";
 import set from "lodash/set";
-import livePreviewJavascript from "@nicolasshiken/live-preview-javascript";
-import CaisyConnectionIndicatorInner  from "./caisy-connection-indicator/CaisyConnectionIndicator";
+import livePreviewJavascript from "@caisy/live-preview-javascript";
+import CaisyConnectionIndicatorInner from "./caisy-connection-indicator/CaisyConnectionIndicator";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -23,7 +23,7 @@ if (!globalStore["pubsub"]) {
 
 export function useCaisyUpdates<T>(
   originalData: T,
-  options?: { locale?: string, richtextV2?: boolean }
+  options?: { locale?: string; richtextV2?: boolean }
 ): T {
   const orgRef = React.useRef(originalData);
   const { locale } = options || {};
@@ -52,12 +52,10 @@ export function useCaisyUpdates<T>(
       }
 
       if (update.fieldType === "richtext") {
-        const richtextKey = options?.richtextV2 ? `${key}.${update.fieldName}` : `${key}.${update.fieldName}.json`;
-        set(
-          newState.data[update.localeApiName],
-          richtextKey,
-          update.value
-        );
+        const richtextKey = options?.richtextV2
+          ? `${key}.${update.fieldName}`
+          : `${key}.${update.fieldName}.json`;
+        set(newState.data[update.localeApiName], richtextKey, update.value);
       } else if (update.fieldType === "connection") {
         window.location.reload();
       } else {

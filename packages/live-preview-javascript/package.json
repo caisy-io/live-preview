@@ -1,11 +1,10 @@
 {
-  "name": "@nicolasshiken/live-preview-javascript",
+  "name": "@caisy/live-preview-javascript",
   "version": "1.0.77",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
