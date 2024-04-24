@@ -1,6 +1,7 @@
 import { createPubSub } from "./pubsub";
 import { startInspectMode } from "./inspect";
 import { startCollaborationConnection } from "./collaboration/collaborationConnection";
+import createCaisyConnectionIndicatorInner  from "./caisy-connection-indicator/createCaisyConnectionIndicator";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -36,7 +37,7 @@ export const getCaisyInspectProps = ({
   };
 };
 
-export interface ILivePreviewSettings {
+ export interface ILivePreviewSettings {
   projectId: string;
   token: string;
   locale?: string;
@@ -162,3 +163,14 @@ edge cases:
 - two projects are beeing fetched in one frontend -> overwrite globale variable name,project id and token
 - switching locales in the frontend -> overwrite globale variable locale and replace content
 */
+
+export const createCaisyConnectionIndicator = createCaisyConnectionIndicatorInner;
+
+const livePreviewJavascript = {
+  createCaisyConnectionIndicator,
+  getCaisyInspectProps,
+  getCaisyToken,
+  caisyLivePreview,
+};
+
+export default livePreviewJavascript;

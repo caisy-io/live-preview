@@ -1,11 +1,10 @@
 import { createPubSub } from "./pubsub";
-import { useEffect, useRef, useState } from "react";
+import React from "react";
 import cloneDeep from "lodash/cloneDeep";
-import deepEqual from "deep-equal";
+import isEqual from "lodash/isEqual";
 import set from "lodash/set";
-export { caisyLivePreview } from "@nicolasshiken/live-preview-javascript/caisyLivePreview";
-export { getCaisyInspectProps } from "@nicolasshiken/live-preview-javascript/getCaisyInspectProps";
-export { getCaisyToken } from "@nicolasshiken/live-preview-javascript/getCaisyToken";
+import livePreviewJavascript from "@nicolasshiken/live-preview-javascript";
+import CaisyConnectionIndicatorInner  from "./caisy-connection-indicator/CaisyConnectionIndicator";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -24,24 +23,24 @@ if (!globalStore["pubsub"]) {
 
 export function useCaisyUpdates<T>(
   originalData: T,
-  options?: { locale?: string }
+  options?: { locale?: string, richtextV2?: boolean }
 ): T {
-  const orgRef = useRef(originalData);
+  const orgRef = React.useRef(originalData);
   const { locale } = options || {};
 
-  const [activeLocale, setActiveLocale] = useState(
+  const [activeLocale, setActiveLocale] = React.useState(
     locale || globalStore["defaultlocale"] || "en"
   );
 
   const localeKey =
     activeLocale || locale || globalStore["defaultlocale"] || "en";
 
-  const [state, setState] = useState({
+  const [state, setState] = React.useState({
     data: { [localeKey]: cloneDeep(originalData) },
     version: 0,
   });
 
-  useEffect(() => {
+  React.useEffect(() => {
     const onUpdate = (update, key) => {
       const newState = {
         data: { [localeKey]: { ...originalData } },
@@ -53,9 +52,10 @@ export function useCaisyUpdates<T>(
       }
 
       if (update.fieldType === "richtext") {
+        const richtextKey = options?.richtextV2 ? `${key}.${update.fieldName}` : `${key}.${update.fieldName}.json`;
         set(
           newState.data[update.localeApiName],
-          `${key}.${update.fieldName}.json`,
+          richtextKey,
           update.value
         );
       } else if (update.fieldType === "connection") {
@@ -99,7 +99,7 @@ export function useCaisyUpdates<T>(
     recursivelySubscribeToComponents(originalData, null);
   }, [originalData]);
 
-  // useEffect(() => {
+  // React.useEffect(() => {
   //   // search for id
   //   // search for __typename
   //   // const typename = (originalData as any)?.__typename;
@@ -139,8 +139,8 @@ export function useCaisyUpdates<T>(
   //   };
   // }, []);
 
-  useEffect(() => {
-    if (deepEqual(originalData, orgRef.current)) {
+  React.useEffect(() => {
+    if (isEqual(originalData, orgRef.current)) {
       return;
     }
     orgRef.current = originalData;
@@ -152,7 +152,7 @@ export function useCaisyUpdates<T>(
     });
   }, [localeKey, originalData]);
 
-  useEffect(() => {
+  React.useEffect(() => {
     if (locale) {
       return;
     }
@@ -169,3 +169,18 @@ export function useCaisyUpdates<T>(
 
   return state.data[localeKey] || originalData;
 }
+
+export const CaisyConnectionIndicator = CaisyConnectionIndicatorInner;
+export const caisyLivePreview = livePreviewJavascript.caisyLivePreview;
+export const getCaisyInspectProps = livePreviewJavascript.getCaisyInspectProps;
+export const getCaisyToken = livePreviewJavascript.getCaisyToken;
+
+const livePreviewReact = {
+  useCaisyUpdates,
+  CaisyConnectionIndicator,
+  caisyLivePreview,
+  getCaisyInspectProps,
+  getCaisyToken,
+};
+
+export default livePreviewReact;
