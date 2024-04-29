@@ -1,7 +1,7 @@
 import { createPubSub } from "./pubsub";
 import { startInspectMode } from "./inspect";
 import { startCollaborationConnection } from "./collaboration/collaborationConnection";
-import createCaisyConnectionIndicatorInner  from "./caisy-connection-indicator/createCaisyConnectionIndicator";
+import createCaisyConnectionIndicatorInner from "./caisy-connection-indicator/createCaisyConnectionIndicator";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -37,7 +37,7 @@ export const getCaisyInspectProps = ({
   };
 };
 
- export interface ILivePreviewSettings {
+export interface ILivePreviewSettings {
   projectId: string;
   token: string;
   locale?: string;
@@ -164,7 +164,8 @@ edge cases:
 - switching locales in the frontend -> overwrite globale variable locale and replace content
 */
 
-export const createCaisyConnectionIndicator = createCaisyConnectionIndicatorInner;
+export const createCaisyConnectionIndicator =
+  createCaisyConnectionIndicatorInner;
 
 const livePreviewJavascript = {
   createCaisyConnectionIndicator,
