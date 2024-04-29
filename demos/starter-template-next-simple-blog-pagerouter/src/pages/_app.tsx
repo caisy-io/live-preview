@@ -27,18 +27,6 @@ export default function App({ Component, pageProps }: AppProps) {
       let close: any = undefined;
       (async () => {
         const debug = localStorage.getItem("debug_caisy_preview") === "true";
-        if ((window as any)?.c?.preview?.defaultLocale) {
-          debug &&
-            console.log(
-              ` (window as any)?.c?.preview?.defaultLocale`,
-
-              (window as any)?.c?.preview?.defaultLocale
-            );
-          if ((window as any)?.c?.preview?.defaultLocale !== router.locale) {
-            window.location.reload();
-          }
-          return;
-        }
 
         close = caisyLivePreview({
           projectId: process.env.NEXT_PUBLIC_CAISY_PROJECT_ID as string,
