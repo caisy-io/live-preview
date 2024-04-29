@@ -1,7 +1,7 @@
 import { createPubSub } from "./pubsub";
 import { startInspectMode } from "./inspect";
 import { startCollaborationConnection } from "./collaboration/collaborationConnection";
-import createCaisyConnectionIndicatorInner  from "./caisy-connection-indicator/createCaisyConnectionIndicator";
+import createCaisyConnectionIndicatorInner from "./caisy-connection-indicator/createCaisyConnectionIndicator";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -37,7 +37,13 @@ export const getCaisyInspectProps = ({
   };
 };
 
- export interface ILivePreviewSettings {
+export const getCaisyToken = () => {
+  const key = "caisy_preview_access_token";
+  const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
+  return keyValue ? keyValue[2] : null;
+};
+
+export const caisyLivePreview = (settings: {
   projectId: string;
   token: string;
   locale?: string;
@@ -45,15 +51,7 @@ export const getCaisyInspectProps = ({
   debug?: boolean;
   namespace?: string;
   enabled?: boolean;
-}
-
-export const getCaisyToken = () => {
-  const key = "caisy_preview_access_token";
-  const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
-  return keyValue ? keyValue[2] : null;
-};
-
-export const caisyLivePreview = (settings: ILivePreviewSettings) => {
+}) => {
   if (typeof window !== "undefined") {
     const { token } = settings;
 
@@ -164,7 +162,8 @@ edge cases:
 - switching locales in the frontend -> overwrite globale variable locale and replace content
 */
 
-export const createCaisyConnectionIndicator = createCaisyConnectionIndicatorInner;
+export const createCaisyConnectionIndicator =
+  createCaisyConnectionIndicatorInner;
 
 const livePreviewJavascript = {
   createCaisyConnectionIndicator,
