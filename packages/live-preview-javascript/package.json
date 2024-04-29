@@ -1,5 +1,5 @@
 {
-  "name": "@nicolasshiken/live-preview-javascript",
+  "name": "@caisy/live-preview-javascript",
   "version": "1.0.81",
   "publishConfig": {
     "access": "public"

@@ -37,7 +37,13 @@ export const getCaisyInspectProps = ({
   };
 };
 
-export interface ILivePreviewSettings {
+export const getCaisyToken = () => {
+  const key = "caisy_preview_access_token";
+  const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
+  return keyValue ? keyValue[2] : null;
+};
+
+export const caisyLivePreview = (settings: {
   projectId: string;
   token: string;
   locale?: string;
@@ -45,15 +51,7 @@ export interface ILivePreviewSettings {
   debug?: boolean;
   namespace?: string;
   enabled?: boolean;
-}
-
-export const getCaisyToken = () => {
-  const key = "caisy_preview_access_token";
-  const keyValue = document.cookie.match("(^|;) ?" + key + "=([^;]*)(;|$)");
-  return keyValue ? keyValue[2] : null;
-};
-
-export const caisyLivePreview = (settings: ILivePreviewSettings) => {
+}) => {
   if (typeof window !== "undefined") {
     const { token } = settings;
 
