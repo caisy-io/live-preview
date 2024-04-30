@@ -41,23 +41,23 @@ export interface ICollaborationState {
   };
 }
 
-declare global {
-  // eslint-disable-next-line @typescript-eslint/naming-convention
-  interface Window {
-    c: {
-      collaboration?: ICollaborationState;
-      activeDocumentIds?: string[];
-      profiles?: {
-        [userId: string]: {
-          displayName?: string;
-          email?: string;
-          userId?: string;
-        };
-      };
-      preview?: {
-        pubsub: PubSub<any>;
-      };
-      debug?: boolean;
-    };
-  }
-}
+// declare global {
+//   // eslint-disable-next-line @typescript-eslint/naming-convention
+//   interface Window {
+//     c: {
+//       collaboration?: ICollaborationState;
+//       activeDocumentIds?: string[];
+//       profiles?: {
+//         [userId: string]: {
+//           displayName?: string;
+//           email?: string;
+//           userId?: string;
+//         };
+//       };
+//       preview?: {
+//         pubsub: PubSub<any>;
+//       };
+//       debug?: boolean;
+//     };
+//   }
+// }

@@ -8,10 +8,11 @@ import {
 } from "./constants";
 import { handlePeerChange } from "./handlePeerChange";
 import { onLocalBroadcastMessage } from "./onLocalBroadcastMessage";
+import { Peer } from "./Peer";
 
 const getSocket = ({ projectId, token, onMessage }) => {
   const baseUrl =
-    `${process.env.NEXT_PUBLIC_CORE_URL}`.replace("http", "ws") +
+    `https://cloud.dev.caisy.io`.replace("http", "ws") +
     `/api/i/v1/collaboration`;
   const socketUrl = `${baseUrl}/ws?token=${token}&project_id=${projectId}&role=preview`;
 
@@ -69,6 +70,8 @@ export const startCollaborationConnection = ({
   }
   window.c["collaboration"] = state;
 
+  console.log("window.c: ", window.c);
+
   const onMessage = (raw) => {
     if (!raw.data) return;
     if (raw.data == "") return;
@@ -76,15 +79,14 @@ export const startCollaborationConnection = ({
 
     switch (payload.t) {
       case INCOMING_SOCKET_MESSAGE_TYPE.CHANGE:
-        {
-          const clientIdsBefore = state.clientIds.slice();
-          state.clientIds = payload.clientIds;
+        const clientIdsBefore = state.clientIds.slice();
+        state.clientIds = payload.clientIds;
 
-          state.connection.wsChange = true;
-          state.connection.isAlone = state.clientIds.length === 1;
-          state.pubsub.emit(PUBSUB_KEY_CONNECTION, [state.connection]);
-          handlePeerChange(clientIdsBefore, state);
-        }
+        state.connection.wsChange = true;
+        state.connection.isAlone = state.clientIds.length === 1;
+        state.pubsub.emit(PUBSUB_KEY_CONNECTION, [state.connection]);
+        handlePeerChange(clientIdsBefore, state);
+
         break;
       case INCOMING_SOCKET_MESSAGE_TYPE.ASSIGNMENT:
         state.connection.wsAssignment = true;
@@ -98,6 +100,7 @@ export const startCollaborationConnection = ({
           const peer = state.peers.find(
             (peer) => peer.clientId === payload.from
           );
+
           if (!peer) return;
 
           const signalObject = JSON.parse(atob(payload.data));
@@ -105,17 +108,19 @@ export const startCollaborationConnection = ({
         }
         break;
       case INCOMING_SOCKET_MESSAGE_TYPE.PEER_MESSAGE:
-        {
-          const peer = state.peers.find(
-            (peer) => peer.clientId === payload.from
-          );
-          if (!peer) return;
-          if (!payload.data) {
-            console.error("no payload data", raw.data, payload);
-            return;
-          }
-          peer.handleSocketMessage(base64ToUint8Array(payload.data));
+        let peer = state.peers.find((peer) => peer.clientId === payload.from);
+
+        if (!peer) {
+          peer = new Peer(payload.from);
         }
+
+        console.log({ peer });
+        if (!payload.data) {
+          console.error("no payload data", raw.data, payload);
+          return;
+        }
+        peer.handleSocketMessage(base64ToUint8Array(payload.data));
+
         break;
       default:
         console.error("unknown ws message type", payload.t);
