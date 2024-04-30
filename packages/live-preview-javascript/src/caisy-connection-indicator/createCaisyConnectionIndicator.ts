@@ -23,7 +23,7 @@ const HEIGHT_BY_STATE = {
   Disconnected: 112,
 };
 
-export const createCaisyConnectionIndicator = () => {
+const createCaisyConnectionIndicator = () => {
   let state = "Connected";
   let description = DESCRIPTION_BY_STATE[state];
 
@@ -110,3 +110,5 @@ export const createCaisyConnectionIndicator = () => {
 
   return { connectionIndicator: indicatorContainer, observer };
 };
+
+export default createCaisyConnectionIndicator;

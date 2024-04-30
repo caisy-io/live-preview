@@ -1,22 +1,19 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.0",
+  "version": "1.0.77",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
-    "./getInspectProps": "./src/index.ts",
-    "./getCaisyInspectProps": "./src/index.ts",
-    "./getCaisyCookie": "./src/index.ts",
-    "./caisyLivePreview": "./src/index.ts",
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
-    "./createCaisyConnectionIndicator": "./src/caisy-connection-indicator/createCaisyConnectionIndicator.ts"
+    ".": "./dist/index.js"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -25,9 +22,10 @@
     "@types/eslint": "^8.56.1",
     "@types/node": "^20.10.6",
     "eslint": "^8.56.0",
+    "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
-  "dependencies": {
-    "simple-peer": "^9.11.1"
-  }
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts"
 }

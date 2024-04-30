@@ -1,4 +1,6 @@
 import "@/styles/globals.css";
+import "@nicolasshiken/live-preview-javascript/styles"
+import "@nicolasshiken/live-preview-javascript/indicatorStyles"
 import type { AppProps } from "next/app";
 import Head from "next/head";
 // import { Toast } from "../components/Toast";
@@ -6,10 +8,11 @@ import { Footer } from "../layouts/Footer";
 import { Navigation } from "../layouts/Navigation";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { caisyLivePreview } from "@nicolasshiken/live-preview-react/caisyLivePreview";
-import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react/CaisyConnectionIndicator";
-import { getCaisyCookie } from "@nicolasshiken/live-preview-react/getCaisyCookie";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+
+import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react";
+import { getCaisyToken } from "@nicolasshiken/live-preview-react";
+import { useCaisyUpdates } from "@nicolasshiken/live-preview-react";
+import { caisyLivePreview } from "@nicolasshiken/live-preview-react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -39,7 +42,7 @@ export default function App({ Component, pageProps }: AppProps) {
 
         close = caisyLivePreview({
           projectId: process.env.NEXT_PUBLIC_CAISY_PROJECT_ID as string,
-          token: getCaisyCookie(),
+          token: getCaisyToken(),
           locale: router.locale,
           enabled: pageProps.draftMode,
           debug,
