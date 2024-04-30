@@ -1,4 +1,4 @@
-import livePreviewJavascript from "@nicolasshiken/live-preview-javascript";
+import livePreviewJavascript from "@caisy/live-preview-javascript";
 import React from "react";
 
 const CaisyConnectionIndicator: React.FC = () => {

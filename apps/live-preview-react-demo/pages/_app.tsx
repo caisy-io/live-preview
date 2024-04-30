@@ -6,9 +6,9 @@ import { UniversalTextProvider } from "../provider/universalText";
 import { IPage } from "../utils/types";
 import { IGenAsset } from "../utils/types_gen";
 import { renderCustomHtmlElements } from "../utils/helpers/renderCustomHtmlElements";
-import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react/CaisyConnectionIndicator";
-import { caisyLivePreview } from "@nicolasshiken/live-preview-react/caisyLivePreview";
-import { getCaisyCookie } from "@nicolasshiken/live-preview-react/getCaisyCookie";
+import { CaisyConnectionIndicator } from "@caisy/live-preview-react";
+import { caisyLivePreview } from "@caisy/live-preview-react";
+import { getCaisyToken } from "@caisy/live-preview-react";
 
 function hexToRgbA(hex, alpha) {
   let c;
@@ -66,7 +66,7 @@ export default function App({ Component, pageProps }) {
 
         close = caisyLivePreview({
           projectId: process.env.NEXT_PUBLIC_CAISY_PROJECT_ID as string,
-          token: getCaisyCookie(),
+          token: getCaisyToken(),
           locale: router.locale,
           enabled: pageProps.draftMode,
           debug,
