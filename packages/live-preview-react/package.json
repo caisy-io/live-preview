@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-react",
-  "version": "1.0.98",
+  "version": "1.0.100",
   "publishConfig": {
     "access": "public"
   },
