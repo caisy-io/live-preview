@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.95",
+  "version": "1.0.97",
   "publishConfig": {
     "access": "public"
   },
@@ -10,7 +10,11 @@
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
     ".": "./dist/index.js",
-    "./getCaisyInspectProps": "./dist/getCaisyInspectProps.js"
+    "./getCaisyInspectProps": {
+      "require": "./dist/getCaisyInspectProps.js",
+      "import": "./dist/getCaisyInspectProps.js",
+      "types": "./dist/getCaisyInspectProps.d.ts"
+    }
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -30,21 +34,5 @@
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "typesVersions": {
-    "*": {
-      "getCaisyInspectProps": [
-        "dist/getCaisyInspectProps.d.ts"
-      ],
-      "styles": [
-        "dist/styles.d.ts"
-      ],
-      "indicatorStyles": [
-        "dist/indicatorStyles.d.ts"
-      ],
-      ".": [
-        "dist/index.d.ts"
-      ]
-    }
-  }
+  "types": "./dist/index.d.ts"
 }
