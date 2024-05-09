@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.85",
+  "version": "1.0.89",
   "publishConfig": {
     "access": "public"
   },
@@ -30,5 +30,12 @@
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "getCaisyInspectProps": [
+        "dist/getCaisyInspectProps.d.ts"
+      ]
+    }
+  }
 }
