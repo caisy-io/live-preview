@@ -1,6 +1,6 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.97",
+  "version": "1.0.99",
   "publishConfig": {
     "access": "public"
   },
@@ -16,11 +16,30 @@
       "types": "./dist/getCaisyInspectProps.d.ts"
     }
   },
+  "tsup": {
+    "dts": true,
+    "minify": true,
+    "treeshake": true,
+    "splitting": true,
+    "clean": true,
+    "outDir": "dist",
+    "entry": [
+      "src/index.ts",
+      "src/getCaisyInspectProps.ts",
+      "src/inspect/styles.css",
+      "src/caisy-connection-indicator/styles.css"
+    ],
+    "format": [
+      "cjs",
+      "esm"
+    ]
+  },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "build-index": "tsup src/index.ts --format cjs,esm --dts",
     "build-inspect-props": "tsup src/getCaisyInspectProps.ts --format cjs,esm --dts",
-    "build": "npm run build-index && npm run build-inspect-props"
+    "build": "npm run build-index && npm run build-inspect-props",
+    "build-tsup": "tsup"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
