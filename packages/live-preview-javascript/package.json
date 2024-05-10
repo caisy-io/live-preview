@@ -1,12 +1,20 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.105",
+  "version": "1.0.107",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
+    "./inpsect": {
+      "import": "./dist/inspect.css",
+      "require": "./dist/inspect.css"
+    },
+    "./connectionIndicator": {
+      "import": "./dist/connectionIndicator.css",
+      "require": "./dist/connectionIndicator.css"
+    },
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
     ".": "./dist/index.js",
