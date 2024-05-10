@@ -2,6 +2,7 @@ import { createPubSub } from "./pubsub";
 import { startInspectMode } from "./inspect";
 import { startCollaborationConnection } from "./collaboration/collaborationConnection";
 import createCaisyConnectionIndicatorInner from "./caisy-connection-indicator/createCaisyConnectionIndicator";
+import { default as getCaisyInspectPropsDefault } from "./getCaisyInspectProps";
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -18,24 +19,7 @@ if (!globalStore["pubsub"]) {
   globalStore["pubsub"] = createPubSub();
 }
 
-export const getCaisyInspectProps = ({
-  id,
-  fieldName,
-  disabled,
-}: {
-  id: string;
-  fieldName: string;
-  disabled?: boolean;
-}) => {
-  if (disabled) {
-    return {};
-  }
-
-  return {
-    "data-caisy-document-id": id,
-    "data-caisy-field-name": fieldName,
-  };
-};
+export const getCaisyInspectProps = getCaisyInspectPropsDefault;
 
 export const getCaisyToken = () => {
   const key = "caisy_preview_access_token";

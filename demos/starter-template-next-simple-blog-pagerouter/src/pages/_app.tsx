@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import "@nicolasshiken/live-preview-javascript/styles"
-import "@nicolasshiken/live-preview-javascript/indicatorStyles"
+import "@nicolasshiken/live-preview-javascript/inpsect";
+import "@nicolasshiken/live-preview-javascript/connectionIndicator";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 // import { Toast } from "../components/Toast";
