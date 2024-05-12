@@ -1,19 +1,21 @@
 {
-  "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.77",
+  "name": "@caisy/live-preview-javascript",
+  "version": "1.0.81",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
-    "./styles": "./src/inspect/styles.css",
-    "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
+    "./styles": "./src/inspect/inspect.css",
+    "./indicatorStyles": "./src/caisy-connection-indicator/connectionIndicator.css",
     ".": "./dist/index.js"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "build": "tsup src/index.ts --format cjs,esm --dts"
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 2 src/inspect/inspect.css src/caisy-connection-indicator/connectionIndicator.css dist/",
+    "build-tsup": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "yarn clean && yarn build-tsup && yarn copy-files"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -21,7 +23,9 @@
     "@turbo/gen": "^1.11.3",
     "@types/eslint": "^8.56.1",
     "@types/node": "^20.10.6",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.56.0",
+    "rimraf": "^5.0.5",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },

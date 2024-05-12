@@ -1,5 +1,5 @@
 import React from "react";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@caisy/live-preview-react";
 import Link from "next/link";
 
 export const PageHeaderLogo: React.FC<any> = ({ logo, logoDark }) => {

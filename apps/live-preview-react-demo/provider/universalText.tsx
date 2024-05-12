@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { IGenUniversalText } from "../utils/types_gen";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@caisy/live-preview-react";
 
 const UniversalTextProviderContext = React.createContext<
   Omit<IGenUniversalText, "__typename">

@@ -13,6 +13,12 @@ const handler = async (
     return res.status(401).send("Unauthorized");
   }
 
+  console.log(
+    req.query.secret,
+    process.env.DRAFT_MODE_SECRET,
+    "req.query.secret, process.env.DRAFT_MODE_SECRET"
+  );
+
   const { slug, caisy_preview_access_token } = req.query;
 
   if (caisy_preview_access_token) {
