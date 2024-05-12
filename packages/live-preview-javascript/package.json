@@ -1,19 +1,36 @@
 {
   "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.77",
+  "version": "1.0.109",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
   "author": "nicolasshiken <nicolasshiken@gmail.com>",
   "exports": {
+    "./inpsect": {
+      "import": "./dist/inspect.css",
+      "require": "./dist/inspect.css"
+    },
+    "./connectionIndicator": {
+      "import": "./dist/connectionIndicator.css",
+      "require": "./dist/connectionIndicator.css"
+    },
     "./styles": "./src/inspect/styles.css",
     "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./getCaisyInspectProps": {
+      "import": "./dist/getCaisyInspectProps.js",
+      "require": "./dist/getCaisyInspectProps.js",
+      "types": "./dist/getCaisyInspectProps.d.ts"
+    }
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
-    "build": "tsup src/index.ts --format cjs,esm --dts"
+    "clean": "rimraf dist/",
+    "copy-files": "copyfiles -u 2 src/inspect/inspect.css src/caisy-connection-indicator/connectionIndicator.css dist/",
+    "build-tsup": "tsup src/index.ts --format cjs,esm --dts",
+    "build-inspect-props": "tsup src/getCaisyInspectProps.ts --format cjs,esm --dts",
+    "build": "yarn clean && yarn build-tsup && yarn copy-files && yarn build-inspect-props"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -21,11 +38,23 @@
     "@turbo/gen": "^1.11.3",
     "@types/eslint": "^8.56.1",
     "@types/node": "^20.10.6",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.56.0",
+    "rimraf": "^5.0.5",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts"
+  "types": "./dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "getCaisyInspectProps": [
+        "dist/getCaisyInspectProps.d.ts"
+      ],
+      ".": [
+        "dist/index.d.ts"
+      ]
+    }
+  }
 }
