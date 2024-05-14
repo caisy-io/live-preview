@@ -160,6 +160,10 @@ export class Peer extends Observable<any> {
     });
 
     this.p2p.on("close", () => {
+      if (state.peers.length > 0) {
+        document.body.setAttribute("data-collaboration", "Connected");
+        return;
+      }
       this.connectedP2P = false;
       console.log("peer closed");
       document.body.setAttribute("data-collaboration", "Reconnecting");

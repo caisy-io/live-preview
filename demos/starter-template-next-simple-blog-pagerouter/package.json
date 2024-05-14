@@ -14,7 +14,8 @@
   "dependencies": {
     "@caisy/rich-text-react-renderer": "^0.7.3",
     "@fontsource/inter": "^4.5.15",
-    "@caisy/live-preview-react": "*",
+    "@nicolasshiken/live-preview-react": "*",
+    "@nicolasshiken/live-preview-javascript": "*",
     "graphql": "^16.6.0",
     "graphql-request": "^5.1.0",
     "next": "^14.0.4",
