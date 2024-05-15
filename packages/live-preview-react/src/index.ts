@@ -3,7 +3,7 @@ import React from "react";
 import cloneDeep from "lodash/cloneDeep";
 import isEqual from "lodash/isEqual";
 import set from "lodash/set";
-import livePreviewJavascript from "@nicolasshiken/live-preview-javascript";
+import livePreviewJavascript from "@caisy/live-preview-javascript";
 import CaisyConnectionIndicatorInner  from "./caisy-connection-indicator/CaisyConnectionIndicator";
 
 const globalRef =

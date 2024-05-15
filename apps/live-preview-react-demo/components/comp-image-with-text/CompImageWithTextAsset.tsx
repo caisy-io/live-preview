@@ -1,5 +1,5 @@
 import ImageWithAspectRatio from "../../base-components/image-with-aspect-ratio/ImageWithAspectRatio";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@caisy/live-preview-react/useCaisyUpdates";
 
 export const CompImageWithTextAsset = (props: any) => {
   const { __typename, src } = useCaisyUpdates({ ...props });
