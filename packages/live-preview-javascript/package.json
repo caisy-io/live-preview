@@ -1,11 +1,11 @@
 {
-  "name": "@nicolasshiken/live-preview-javascript",
-  "version": "1.0.109",
+  "name": "@caisy/live-preview-javascript",
+  "version": "1.0.132",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "author": "nicolasshiken <nicolasshiken@gmail.com>",
+  "author": "caisy.io info@caisy.io",
   "exports": {
     "./inpsect": {
       "import": "./dist/inspect.css",
@@ -28,8 +28,8 @@
     "lint": "eslint . --max-warnings 0",
     "clean": "rimraf dist/",
     "copy-files": "copyfiles -u 2 src/inspect/inspect.css src/caisy-connection-indicator/connectionIndicator.css dist/",
-    "build-tsup": "tsup src/index.ts --format cjs,esm --dts",
-    "build-inspect-props": "tsup src/getCaisyInspectProps.ts --format cjs,esm --dts",
+    "build-tsup": "tsup --splitting src/index.ts --treeshake --format cjs,esm --dts",
+    "build-inspect-props": "tsup --splitting src/getCaisyInspectProps.ts --treeshake --format cjs,esm --dts",
     "build": "yarn clean && yarn build-tsup && yarn copy-files && yarn build-inspect-props"
   },
   "devDependencies": {
