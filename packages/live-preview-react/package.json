@@ -1,11 +1,11 @@
 {
   "name": "@caisy/live-preview-react",
-  "version": "1.0.132",
+  "version": "1.0.150",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "author": "caisy.io info@caisy.io",
+  "author": "caisy <caisy@gmail.com>",
   "exports": {
     ".": "./dist/index.js"
   },
@@ -18,7 +18,7 @@
     "@swc/core": "^1.4.11"
   },
   "peerDependencies": {
-    "@caisy/live-preview-javascript": "*",
+    "@nicolasshiken/live-preview-javascript": "*",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

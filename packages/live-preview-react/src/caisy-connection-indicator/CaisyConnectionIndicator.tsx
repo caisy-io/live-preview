@@ -1,9 +1,8 @@
 import livePreviewJavascript from "@caisy/live-preview-javascript";
 import React from "react";
-const { useEffect } = React;
 
 const CaisyConnectionIndicator: React.FC = () => {
-  useEffect(() => {
+  React.useEffect(() => {
     if (typeof window === "undefined") return;
 
     const { observer, connectionIndicator } =

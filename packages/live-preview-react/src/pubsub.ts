@@ -30,5 +30,3 @@ export const createPubSub = (): PubSub => {
 
   return { on, emit, off };
 };
-
-export default createPubSub;
