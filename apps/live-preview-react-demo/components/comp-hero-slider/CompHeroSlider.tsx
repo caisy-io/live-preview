@@ -5,7 +5,7 @@ import {
 } from "../../utils/types_gen";
 import { CompHeroSliderScrollDownButton } from "./CompHeroSliderScrollDownButton";
 import { SCompHeroSlider } from "./styles/SCompHeroSlider";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
+import { useCaisyUpdates } from "@caisy/live-preview-react/useCaisyUpdates";
 import { CompHeroSliderSlideWrapper } from "./CompHeroSliderSlideWrapper";
 
 export const CompHeroSlider: React.FC<

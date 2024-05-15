@@ -16,8 +16,8 @@ import { Grid } from "../../base-components/grid/Grid";
 import { SCompPageHeaderHeadlineWrapper } from "./styles/SCompPageHeaderHeadlineWrapper";
 import { Video } from "../video/Video";
 import { SCompPageHeaderBackdropShadow } from "./styles/SCompPageHeaderBackdropShadow";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react/useCaisyUpdates";
-import { getCaisyInspectProps } from "@nicolasshiken/live-preview-react/getCaisyInspectProps";
+import { useCaisyUpdates } from "@caisy/live-preview-react/useCaisyUpdates";
+import { getCaisyInspectProps } from "@caisy/live-preview-react/getCaisyInspectProps";
 
 export const CompPageHeader: React.FC<
   React.PropsWithChildren<IGenCompPageHeader>

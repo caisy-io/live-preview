@@ -1,24 +1,29 @@
 {
-  "name": "@nicolasshiken/live-preview-react",
-  "version": "1.0.110",
+  "name": "@caisy/live-preview-react",
+  "version": "1.0.120",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "author": "nicolasshiken <nicolasshiken@gmail.com>",
+  "author": "caisy.io <info@caisy.io>",
   "exports": {
     ".": "./dist/index.js"
+    "./useCaisyUpdates": "./dist/useCaisyUpdates.js"
   },
+  "files": [
+    "dist",
+    "package.json"
+  ],
+    "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "lint": "eslint . --max-warnings 0",
     "generate:component": "turbo gen react-component",
     "build": "tsup src/index.ts --format cjs,esm --dts"
   },
-  "dependencies": {
-    "@swc/core": "^1.4.11"
-  },
   "peerDependencies": {
-    "@nicolasshiken/live-preview-javascript": "*",
+    "@caisy/live-preview-javascript": "1.0.120",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -33,8 +38,5 @@
     "eslint": "^8.56.0",
     "tsup": "^8.0.2",
     "typescript": "^5.3.3"
-  },
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts"
+  }
 }
