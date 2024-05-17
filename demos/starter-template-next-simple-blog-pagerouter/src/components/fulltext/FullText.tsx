@@ -1,7 +1,7 @@
 import { RichTextRenderer } from "@caisy/rich-text-react-renderer";
 import { CenterContainer } from "../CenterContainer";
 import { DocumentLink } from "./overwrites/DocumentLink";
-import { getCaisyInspectProps } from "@nicolasshiken/live-preview-javascript";
+import { getCaisyInspectProps } from "@caisy/live-preview-javascript";
 
 interface IFullText {
   text?: any;

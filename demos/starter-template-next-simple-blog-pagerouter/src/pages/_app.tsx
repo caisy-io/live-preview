@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
-import "@nicolasshiken/live-preview-javascript/inpsect";
-import "@nicolasshiken/live-preview-javascript/connectionIndicator";
+import "@caisy/live-preview-javascript/inpsect";
+import "@caisy/live-preview-javascript/connectionIndicator";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 // import { Toast } from "../components/Toast";
@@ -9,10 +9,10 @@ import { Navigation } from "../layouts/Navigation";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
 
-import { CaisyConnectionIndicator } from "@nicolasshiken/live-preview-react";
-import { getCaisyToken } from "@nicolasshiken/live-preview-react";
-import { useCaisyUpdates } from "@nicolasshiken/live-preview-react";
-import { caisyLivePreview } from "@nicolasshiken/live-preview-react";
+import { CaisyConnectionIndicator } from "@caisy/live-preview-react";
+import { getCaisyToken } from "@caisy/live-preview-react";
+import { useCaisyUpdates } from "@caisy/live-preview-react";
+import { caisyLivePreview } from "@caisy/live-preview-react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
