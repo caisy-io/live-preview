@@ -1,6 +1,6 @@
 {
   "name": "@caisy/live-preview-javascript",
-  "version": "1.1.13",
+  "version": "1.1.15",
   "publishConfig": {
     "access": "public"
   },

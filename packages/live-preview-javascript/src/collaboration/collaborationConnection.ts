@@ -11,8 +11,12 @@ import { onLocalBroadcastMessage } from "./onLocalBroadcastMessage";
 
 const getSocket = ({ projectId, token, onMessage }) => {
   const baseUrl =
-    `${process.env.NEXT_PUBLIC_CORE_URL}`.replace("http", "ws") +
-    `/api/i/v1/collaboration`;
+    `${
+      process.env.NEXT_PUBLIC_CAISY_ENDPOINT &&
+      process.env.NEXT_PUBLIC_CAISY_ENDPOINT != ""
+        ? process.env.NEXT_PUBLIC_CAISY_ENDPOINT
+        : "https://cloud.caisy.io"
+    }`.replace("http", "ws") + `/api/i/v1/collaboration`;
   const socketUrl = `${baseUrl}/ws?token=${token}&project_id=${projectId}&role=preview`;
 
   const socket = new WebSocket(socketUrl);
