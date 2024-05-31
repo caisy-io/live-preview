@@ -1,42 +1,30 @@
-export default defineEventHandler((event) => {
-  //   console.log(` req.headers.refferer`, event.headers.referer);
-  if (event.node.req.method !== "GET") {
-    throw createError({
-      statusCode: 400,
-      statusMessage: "Wrong request method",
-    });
-    // return event.node.res.status(400).send("Wrong request method");
-  }
+import {
+  defineEventHandler,
+  getQuery,
+  setResponseStatus,
+  sendRedirect,
+} from "h3";
 
+export default defineEventHandler(async (event) => {
   const query = getQuery(event);
+  const { secret, slug, caisy_preview_access_token } = query;
+  // const config = useRuntimeConfig(event);
 
-  if (query.secret !== process.env.DRAFT_MODE_SECRET && false) {
-    throw createError({
-      statusCode: 401,
-      statusMessage: "Unauthorized",
-    });
-    // return res.status(401).send("Unauthorized");
+  if (event.node.req.method !== "GET") {
+    setResponseStatus(event, 400);
+    return "Wrong request method";
   }
 
-  const { slug, caisy_preview_access_token } = query;
-
-  if (caisy_preview_access_token) {
-    setCookie(
-      event,
-      "caisy_preview_access_token",
-      caisy_preview_access_token as string
-    );
-    // res.setHeader(
-    //   "Set-Cookie",
-    //   `caisy_preview_access_token=${caisy_preview_access_token}; Path=/;`
-    // );
+  // Check if the secret is correct, this is purely for security
+  if (secret !== "mySecret") {
+    setResponseStatus(event, 401);
+    return "Unauthorized";
   }
 
-  //   if (process.env.USE_DRAFT_MODE == "true") {
-  //     //@ts-ignore
-  //     res.setDraftMode({ enable: true });
-  //   }
-  //   console.log("Draft mode enabled successfully");
+  // Redirect to the correct page with the slug we set on the Preview URL
+  const redirectTo = slug
+    ? `/${slug}?caisy_preview_access_token=${caisy_preview_access_token}`
+    : `/?caisy_preview_access_token=${caisy_preview_access_token}`;
 
-  sendRedirect(event, slug ? `/${slug}` : `/`);
+  sendRedirect(event, redirectTo);
 });

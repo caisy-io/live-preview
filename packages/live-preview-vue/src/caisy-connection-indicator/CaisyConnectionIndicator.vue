@@ -1,13 +1,15 @@
-<script setup>
-import "@nicolasshiken/live-preview-javascript/indicatorStyles";
-import "@nicolasshiken/live-preview-javascript/styles";
-import { createCaisyConnectionIndicator } from "@nicolasshiken/live-preview-javascript/createCaisyConnectionIndicator";
+<script setup lang="ts">
+// import "@caisy/live-preview-javascript/connectionIndicator";
+// import "@caisy/live-preview-javascript/inpsect";
+import livePreviewJavascript from "@caisy/live-preview-javascript/test";
 import { onMounted, onUnmounted } from "vue";
 
 let connectionIndicator, observer;
 
 onMounted(() => {
-  const createdIndicator = createCaisyConnectionIndicator();
+  const createdIndicator =
+    livePreviewJavascript.createCaisyConnectionIndicator();
+  console.log({ createdIndicator });
   connectionIndicator = createdIndicator.connectionIndicator;
   observer = createdIndicator.observer;
   document.body.append(connectionIndicator);

@@ -16,7 +16,7 @@ const getSocket = ({ projectId, token, onMessage }) => {
       process.env.NEXT_PUBLIC_CAISY_ENDPOINT &&
       process.env.NEXT_PUBLIC_CAISY_ENDPOINT != ""
         ? process.env.NEXT_PUBLIC_CAISY_ENDPOINT
-        : "https://cloud.caisy.io"
+        : "https://cloud.dev.caisy.io"
     }`.replace("http", "ws") + `/api/i/v1/collaboration`;
   const socketUrl = `${baseUrl}/ws?token=${token}&project_id=${projectId}&role=preview`;
 

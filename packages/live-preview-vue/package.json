@@ -1,27 +1,29 @@
 {
-  "name": "@nicolasshiken/live-preview-vue",
+  "name": "@caisy/live-preview-vue",
   "version": "1.0.0",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "author": "nicolasshiken <nicolasshiken@gmail.com>",
+  "type": "module",
   "exports": {
-    "./useCaisyUpdates": "./src/index.ts",
-    "./getCaisyInspectProps": "./src/index.ts",
+    ".": "./dist/index.js",
+    "./CaisyConnectionIndicator": "./src/caisy-connection-indicator/CaisyConnectionIndicator.vue",
     "./caisyLivePreview": "./src/index.ts",
-    "./caisyConnectionIndicator": "./src/caisy-connection-indicator/CaisyConnectionIndicator.vue",
-    "./getCaisyCookie": "./src/index.ts"
+    "./getCaisyToken": "./src/index.ts"
   },
   "scripts": {
-    "lint": "eslint . --max-warnings 0"
+    "lint": "eslint . --max-warnings 0",
+    "build": "tsup src/index.ts --format cjs,esm --dts"
   },
   "dependencies": {
-    "@nicolasshiken/live-preview-javascript": "*",
     "@vue/tsconfig": "^0.5.1",
     "deep-equal": "^2.2.3",
     "lodash": "^4.17.21",
     "vue": "^3.4.21"
+  },
+  "peerDependencies": {
+    "@caisy/live-preview-javascript": "*"
   },
   "devDependencies": {
     "@repo/eslint-config": "*",
@@ -31,5 +33,8 @@
     "@types/node": "^20.10.6",
     "eslint": "^8.56.0",
     "typescript": "^5.3.3"
-  }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts"
 }

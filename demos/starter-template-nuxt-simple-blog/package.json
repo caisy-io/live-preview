@@ -24,7 +24,8 @@
   "dependencies": {
     "@caisy/rich-text-vue-renderer": "^0.3.0",
     "@funken-studio/sitemap-nuxt-3": "^4.0.4",
-    "@nicolasshiken/live-preview-vue": "*",
+    "@caisy/live-preview-vue": "*",
+    "@caisy/live-preview-javascript": "*",
     "@nuxtjs/robots": "^3.0.0",
     "autoprefixer": "^10.4.17",
     "graphql": "^16.8.1",

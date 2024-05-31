@@ -10,7 +10,8 @@ export default defineNuxtConfig({
   },
   vite: {
     define: {
-      global: "window",
+      global: {},
+      // crypto: {},
     },
   },
   modules: [
@@ -25,9 +26,9 @@ export default defineNuxtConfig({
   runtimeConfig: {
     caisyProjectId: process.env.CAISY_PROJECT_ID,
     caisyApiKey: process.env.CAISY_API_KEY,
+    DRAFT_MODE_SECRET: process.env.DRAFT_MODE_SECRET,
     public: {
       showOnboardingToast: process.env.SHOW_ONBOARDING_TOAST ?? true,
     },
   },
-  transpile: ["@nicolasshiken/live-preview-vue"],
 });

@@ -1,4 +1,4 @@
-# @nicolasshiken/live-preview-react
+# @caisy/live-preview-react
 
 ## 2.0.0
 

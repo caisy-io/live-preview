@@ -5,8 +5,9 @@
     "access": "public"
   },
   "private": false,
+  "type": "module",
   "exports": {
-    "./inpsect": {
+    "./inspect": {
       "import": "./dist/inspect.css",
       "require": "./dist/inspect.css"
     },
@@ -14,13 +15,27 @@
       "import": "./dist/connectionIndicator.css",
       "require": "./dist/connectionIndicator.css"
     },
-    "./styles": "./src/inspect/styles.css",
-    "./indicatorStyles": "./src/caisy-connection-indicator/styles.css",
+    "./styles": "./src/inspect/inspect.css",
+    "./indicatorStyles": "./src/caisy-connection-indicator/connectionIndicator.css",
     ".": "./dist/index.js",
     "./getCaisyInspectProps": {
       "import": "./dist/getCaisyInspectProps.js",
       "require": "./dist/getCaisyInspectProps.js",
       "types": "./dist/getCaisyInspectProps.d.ts"
+    },
+    "./caisyLivePreview": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./getCaisyToken": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./test": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
     }
   },
   "scripts": {

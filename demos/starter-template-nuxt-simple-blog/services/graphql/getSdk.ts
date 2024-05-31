@@ -4,9 +4,9 @@ import { getSdk as getSdkWithClient, type Requester } from "./__generated/sdk";
 
 export const requester: Requester<any> = async (doc: any, vars: any) => {
   const CAISY_PROJECT_ID =
-    process.env.CAISY_PROJECT_ID || "322ad481-7595-4ad4-8c11-f30d9d81b0d3";
+    process.env.CAISY_PROJECT_ID || "8d9fc669-3158-4ccc-a682-b8a6091f7d50";
   const CAISY_API_KEY =
-    process.env.CAISY_API_KEY || "eMJW1zq1nvOxXU3LnEkyZEwX3tRSVU7p";
+    process.env.CAISY_API_KEY || "rfMG4JIbrEoWo7L0SOo4VDM9HWQclw99";
   const NODE_ENV = process.env.NODE_ENV;
   const PUBLIC_CORE_URL =
     process.env.NEXT_PUBLIC_CORE_URL || "https://cloud.dev.caisy.io";
