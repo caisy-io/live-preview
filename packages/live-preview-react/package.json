@@ -1,6 +1,6 @@
 {
-  "name": "@nicolasshiken/live-preview-react",
-  "version": "1.0.110",
+  "name": "@caisy/live-preview-react",
+  "version": "1.1.15",
   "publishConfig": {
     "access": "public"
   },
@@ -17,7 +17,7 @@
     "@swc/core": "^1.4.11"
   },
   "peerDependencies": {
-    "@caisy/live-preview-javascript": "*",
+    "@caisy/live-preview-javascript": "^1.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

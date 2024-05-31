@@ -1,5 +1,5 @@
 import React from "react";
-import { useCaisyUpdates } from "@caisy/live-preview-react";
+import { useCaisyUpdates } from "@caisy/live-preview-react/useCaisyUpdates";
 import Link from "next/link";
 import { SPageHeaderLinkElement } from "./styles/SPageHeaderLinkElement";
 

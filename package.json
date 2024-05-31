@@ -6,6 +6,7 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "bump": "turbo run build --filter=@caisy/live-preview-javascript && turbo run build --filter=@caisy/live-preview-react && yarn workspace @caisy/live-preview-javascript version --no-git-tag-version --patch && yarn workspace @caisy/live-preview-react version --patch && changeset version && changeset publish",
     "publish-packages": "turbo run build --filter=@caisy/live-preview-react && changeset version && changeset publish"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 import { Arrow } from "../../constants/svgs/Arrow";
 import { SCompImageWithTextButtonContent } from "../comp-image-with-text/styles/SCompImageWithTextButtonContent";
 import { IGenCompButtonExternalLinks } from "../../utils/types_gen";
-import { useCaisyUpdates } from "@caisy/live-preview-react";
+import { useCaisyUpdates } from "@caisy/live-preview-react/useCaisyUpdates";
 
 export const Button = (props: any) => {
   const button = useCaisyUpdates({ ...props });
