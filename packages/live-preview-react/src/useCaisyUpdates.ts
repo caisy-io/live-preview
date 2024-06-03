@@ -3,7 +3,7 @@ import cloneDeep from "lodash/cloneDeep";
 import isEqual from "lodash/isEqual";
 import set from "lodash/set";
 import createPubSub from "./pubsub";
-const { useRef, useEffect, useState  } = React;
+const { useRef, useEffect, useState } = React;
 
 const globalRef =
   (typeof window !== "undefined" && (window as any).c) ||
@@ -55,7 +55,10 @@ export function useCaisyUpdates<T>(
           ? `${key}.${update.fieldName}`
           : `${key}.${update.fieldName}.json`;
         set(newState.data[update.localeApiName], richtextKey, update.value);
-      } else if (update.fieldType === "connection") {
+      } else if (
+        update.fieldType === "connection" ||
+        update.fieldType === "file"
+      ) {
         window.location.reload();
       } else {
         set(
