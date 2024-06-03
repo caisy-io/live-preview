@@ -63,7 +63,18 @@ export default function App({ Component, pageProps }: AppProps) {
       {/* {process.env.NEXT_PUBLIC_SHOW_ONBOARDING_TOAST != "false" && <Toast />} */}
       {liveProps.Navigation && <Navigation {...liveProps.Navigation} />}
       <Component {...liveProps} />
-      <CaisyConnectionIndicator />
+      <CaisyConnectionIndicator
+        i18n={{
+          descriptionConnected: "Connected to the preview server test",
+          descriptionReconnecting:
+            "Connected to the preview server, but there is no active caisy window to connect to test",
+          descriptionDisconnected:
+            "Your connection has timed out, to continue restart the preview in <strong>caisy</strong> test",
+          livePreviewConnected: "Live Preview Connected test",
+          livePreviewReconnecting: "Live Preview Reconnecting test",
+          livePreviewDisconnected: "Live Preview Disconnected test",
+        }}
+      />
       {liveProps.Footer && <Footer {...liveProps.Footer} />}
     </>
   );

@@ -2,13 +2,6 @@ import { useDraggableElement } from "./useDraggableElement";
 import { iconCaisy, iconDragHandler } from "./icons";
 import { createElement } from "../helpers/createElement";
 
-const DESCRIPTION_BY_STATE = {
-  Disconnected:
-    "Your connection has timed out, to continue restart the preview in <strong>caisy</strong>",
-  Reconnecting:
-    "Connected to the preview server, but there is no active caisy window to connect to",
-};
-
 type IConnectionState = "Connected" | "Reconnecting" | "Disconnected";
 
 const WIDTH_BY_STATE = {
@@ -23,7 +16,28 @@ const HEIGHT_BY_STATE = {
   Disconnected: 112,
 };
 
-const createCaisyConnectionIndicator = () => {
+const createCaisyConnectionIndicator = ({
+  i18n: {
+    descriptionConnected = "Connected to the preview server",
+    descriptionReconnecting = "Connected to the preview server, but there is no active caisy window to connect to",
+    descriptionDisconnected = "Your connection has timed out, to continue restart the preview in <strong>caisy</strong>",
+    livePreviewConnected = "Live Preview Connected",
+    livePreviewReconnecting = "Live Preview Reconnecting",
+    livePreviewDisconnected = "Live Preview Disconnected",
+  } = {},
+} = {}) => {
+  const DESCRIPTION_BY_STATE = {
+    Connected: descriptionConnected,
+    Reconnecting: descriptionReconnecting,
+    Disconnected: descriptionDisconnected,
+  };
+
+  const LIVE_PREVIEW_BY_STATE = {
+    Connected: livePreviewConnected,
+    Reconnecting: livePreviewReconnecting,
+    Disconnected: livePreviewDisconnected,
+  };
+
   let state = "Connected";
   let description = DESCRIPTION_BY_STATE[state];
 
@@ -36,7 +50,7 @@ const createCaisyConnectionIndicator = () => {
   const content = createElement({
     tagName: "div",
     className: `caisy-connection-indicator-content --${state.toLowerCase()}`,
-    content: `${iconCaisy} Live Preview ${state}`,
+    content: `${iconCaisy} ${LIVE_PREVIEW_BY_STATE[state]}`,
   });
 
   const indicatorHeader = createElement({
@@ -61,7 +75,7 @@ const createCaisyConnectionIndicator = () => {
 
   const observer = new MutationObserver((e) => {
     state = document.body.dataset["collaboration"] as IConnectionState;
-    console.log({ state });
+
     if (!state) return;
     description = DESCRIPTION_BY_STATE[state];
 
@@ -83,7 +97,7 @@ const createCaisyConnectionIndicator = () => {
       ".caisy-connection-indicator-content"
     );
 
-    contentElement.innerHTML = `${iconCaisy} Live Preview ${state}`;
+    contentElement.innerHTML = `${iconCaisy} ${LIVE_PREVIEW_BY_STATE[state]}`;
 
     if (description) {
       indicator.appendChild(descriptionElement);
