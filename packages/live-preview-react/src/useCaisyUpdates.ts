@@ -22,7 +22,11 @@ if (!globalStore["pubsub"]) {
 
 export function useCaisyUpdates<T>(
   originalData: T,
-  options?: { locale?: string; richtextV2?: boolean }
+  options?: { locale?: string; richtextV2?: boolean },
+  onUpdateOverwrite?: {
+    "connection": (event: {update: any, key:string}) => void,
+    "file": (event: {update: any, key:string}) => void
+  }
 ): T {
   const orgRef = useRef(originalData);
   const { locale } = options || {};
@@ -59,7 +63,11 @@ export function useCaisyUpdates<T>(
         update.fieldType === "connection" ||
         update.fieldType === "file"
       ) {
-        window.location.reload();
+        if (onUpdateOverwrite && onUpdateOverwrite[update.fieldType]) {
+          onUpdateOverwrite[update.fieldType]({update, key});
+        }else {
+          window.location.reload();
+        }
       } else {
         set(
           newState.data[update.localeApiName],
