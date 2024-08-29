@@ -9,12 +9,11 @@ import {
 import { handlePeerChange } from "./handlePeerChange";
 import { onLocalBroadcastMessage } from "./onLocalBroadcastMessage";
 
-const getSocket = ({ projectId, token, onMessage }) => {
+const getSocket = ({ projectId, token, onMessage, caisyEndpoint }) => {
   const baseUrl =
     `${
-      process.env.NEXT_PUBLIC_CAISY_ENDPOINT &&
-      process.env.NEXT_PUBLIC_CAISY_ENDPOINT != ""
-        ? process.env.NEXT_PUBLIC_CAISY_ENDPOINT
+      caisyEndpoint && caisyEndpoint != ""
+        ? caisyEndpoint
         : "https://cloud.caisy.io"
     }`.replace("http", "ws") + `/api/i/v1/collaboration`;
   const socketUrl = `${baseUrl}/ws?token=${token}&project_id=${projectId}&role=preview`;
@@ -42,9 +41,11 @@ export const hexDump = (buf) =>
 export const startCollaborationConnection = ({
   projectId,
   token,
+  caisyEndpoint,
 }: {
   projectId: string;
   token: string;
+  caisyEndpoint?: string;
 }) => {
   const state = {
     peers: [],
@@ -126,7 +127,7 @@ export const startCollaborationConnection = ({
     }
   };
 
-  const { socket } = getSocket({ token, projectId, onMessage });
+  const { socket } = getSocket({ token, projectId, onMessage, caisyEndpoint });
   state.socket = socket;
 
   state.localBroadcastChannel = new BroadcastChannel(
