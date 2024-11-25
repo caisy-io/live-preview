@@ -1,6 +1,6 @@
 {
   "name": "@caisy/live-preview-qwik",
-  "version": "1.0.25",
+  "version": "1.0.26",
   "description": "caisy live preview library for qwik",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
