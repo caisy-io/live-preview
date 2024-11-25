@@ -1,6 +1,6 @@
 {
   "name": "@caisy/live-preview-qwik",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "description": "caisy live preview library for qwik",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
@@ -64,7 +64,6 @@
     "ieee754": "^1.2.1",
     "js-base64": "^3.7.7",
     "lib0": "^0.2.98",
-    "queue-microtask": "^1.2.3",
     "vite-plugin-node-polyfills": "^0.22.0"
   }
 }
