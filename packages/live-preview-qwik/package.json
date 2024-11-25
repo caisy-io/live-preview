@@ -1,6 +1,6 @@
 {
   "name": "@caisy/live-preview-qwik",
-  "version": "1.0.17",
+  "version": "1.0.18",
   "description": "caisy live preview library for qwik",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
@@ -18,6 +18,9 @@
   ],
   "engines": {
     "node": "^18.17.0 || ^20.3.0 || >=21.0.0"
+  },
+  "browser": {
+    "buffer": "buffer"
   },
   "private": false,
   "type": "module",
