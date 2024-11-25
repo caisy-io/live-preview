@@ -1,6 +1,6 @@
 {
   "name": "@caisy/live-preview-qwik",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "caisy live preview library for qwik",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
@@ -48,6 +48,7 @@
     "typescript": "5.4.5",
     "undici": "*",
     "vite": "5.3.5",
+    "vite-plugin-node-polyfills": "^0.22.0",
     "vite-tsconfig-paths": "^4.2.1"
   },
   "dependencies": {
