@@ -1,6 +1,6 @@
 {
   "name": "@caisy/live-preview-qwik",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "description": "caisy live preview library for qwik",
   "main": "./lib/index.qwik.mjs",
   "qwik": "./lib/index.qwik.mjs",
@@ -38,7 +38,6 @@
   "devDependencies": {
     "@builder.io/qwik": "1.10.0",
     "@types/eslint": "8.56.10",
-    "@types/lodash-es": "^4.17.12",
     "@types/node": "20.14.11",
     "@typescript-eslint/eslint-plugin": "7.16.1",
     "@typescript-eslint/parser": "7.16.1",
@@ -59,7 +58,6 @@
     "get-browser-rtc": "^1.1.0",
     "js-base64": "^3.7.7",
     "lib0": "^0.2.98",
-    "lodash-es": "^4.17.21",
     "queue-microtask": "^1.2.3",
     "safe-buffer": "^5.2.1"
   }
