@@ -13,12 +13,9 @@ export const PEER_MESSAGE_TYPE_PEER_MUTATION = 12; // when ever there are change
 export const PEER_MESSAGE_TYPE_HOT_FIELD_UPDATE = 13; // since the value of fields can change very often we send this on a seperate channel
 export const PEER_MESSAGE_TYPE_PREVIEW_FIELD_UPDATE = 14;
 export const PEER_MESSAGE_TYPE_PREVIEW_FIELD_ACTIVE = 15;
-
-
 export const PEER_MESSAGE_TYPE_Y_UPDATE = 35;
 export const PEER_MESSAGE_TYPE_Y_AWARENESS = 36;
 export const PEER_MESSAGE_TYPE_Y_AWARENESS_REQUEST = 38;
-
 // pubsub only used internally not peer2peer or webhocket
 export const PUBSUB_KEY_PREVIEW_FIELD_UPDATE = "pfu";
 export const PUBSUB_KEY_CONNECTION = "conn";
@@ -27,15 +24,22 @@ export const PUBSUB_KEY_ACTIVE_URL_CHANGE = "auc";
 
 // used for websocket
 export enum INCOMING_SOCKET_MESSAGE_TYPE {
-  SIGNAL = "signal",
-  CHANGE = "change",
-  ASSIGNMENT = "assignment",
-  PEER_MESSAGE = "peer",
-}
+    SIGNAL = "signal",
+    CHANGE = "change",
+    ASSIGNMENT = "assignment",
+    PEER_MESSAGE = "peer",
+    // POKE_REQUEST = "pokereq",
+    // POKE_RESPONSE = "pokeres",
+    DEBUG = "debug",
+    // V2
+    YDOC_INIT_TO_CLIENT = "yitc",
+    YDOC_NOT_FOUND_TO_CLIENT = "ynftc",
+    YDOC_UPDATE_TO_CLIENT = "yutc",
+  }
 export enum OUTGOING_SOCKET_MESSAGE_TYPE {
-  SWITCH = "switch",
-  SIGNAL = "signal",
-  PEER_MESSAGE = "peer",
+    SWITCH = "switch",
+    SIGNAL = "signal",
+    PEER_MESSAGE = "peer",
 }
 
 // broadcast message types

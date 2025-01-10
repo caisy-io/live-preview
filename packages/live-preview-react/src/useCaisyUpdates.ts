@@ -1,8 +1,6 @@
 import React from "react";
-import cloneDeep from "lodash/cloneDeep";
-import isEqual from "lodash/isEqual";
-import set from "lodash/set";
 import createPubSub from "./pubsub";
+import { isEqual, set } from "./helper";
 const { useRef, useEffect, useState } = React;
 
 const globalRef =
@@ -39,7 +37,7 @@ export function useCaisyUpdates<T>(
     activeLocale || locale || globalStore["defaultlocale"] || "en";
 
   const [state, setState] = useState({
-    data: { [localeKey]: cloneDeep(originalData) },
+    data: { [localeKey]: structuredClone(originalData) },
     version: 0,
   });
 
@@ -51,7 +49,7 @@ export function useCaisyUpdates<T>(
       };
 
       if (!newState.data[update.localeApiName]) {
-        newState.data[update.localeApiName] = cloneDeep(originalData);
+        newState.data[update.localeApiName] = structuredClone(originalData);
       }
 
       if (update.fieldType === "richtext") {
@@ -154,7 +152,7 @@ export function useCaisyUpdates<T>(
     orgRef.current = originalData;
     setState({
       data: {
-        [localeKey]: cloneDeep(originalData),
+        [localeKey]: structuredClone(originalData),
       },
       version: 0,
     });

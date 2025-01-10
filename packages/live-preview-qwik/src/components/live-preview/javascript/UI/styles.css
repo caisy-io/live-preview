@@ -1,0 +1,17 @@
+.caisy-live-preview-element {
+  width: 100px;
+  height: 48px;
+  border-radius: 8px;
+  background-color: rgba(0, 140, 255, 0.8);
+}
+
+.caisy-live-preview-element:hover {
+  background-color: rgba(0, 140, 255, 1);
+}
+
+.caisy-live-preview-element-wrapper {
+  position: fixed;
+  z-index: 9999;
+  bottom: 24px;
+  left: calc(50% - 50px);
+}

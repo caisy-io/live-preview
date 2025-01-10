@@ -13,16 +13,16 @@ import {
   PEER_MESSAGE_TYPE_Y_AWARENESS_REQUEST,
   PEER_MESSAGE_TYPE_Y_UPDATE,
 } from "./constants";
-import { ICollaborationState, IPeer } from "./types";
-import { handleFieldActiveOn } from "./peer-message-handler/handleFieldActiveOn";
-import { handleFieldInactiveOn } from "./peer-message-handler/handleFieldInactiveOn";
-import { handleHotFieldUpdate } from "./peer-message-handler/handleHotFieldUpdate";
-import { handleFieldUnsubscribeOn } from "./peer-message-handler/handleFieldUnsubscribeOn";
 import { handleActiveDocumentChange } from "./peer-message-handler/handleActiveDocumentChange";
 import { handleActiveURL } from "./peer-message-handler/handleActiveURL";
-import { handlePeerMutation } from "./peer-message-handler/handlePeerMutation";
+import { handleFieldActiveOn } from "./peer-message-handler/handleFieldActiveOn";
 import { handleFieldDissmiss } from "./peer-message-handler/handleFieldDissmiss";
+import { handleFieldInactiveOn } from "./peer-message-handler/handleFieldInactiveOn";
+import { handleFieldUnsubscribeOn } from "./peer-message-handler/handleFieldUnsubscribeOn";
+import { handleHotFieldUpdate } from "./peer-message-handler/handleHotFieldUpdate";
+import { handlePeerMutation } from "./peer-message-handler/handlePeerMutation";
 import { handlePreviewFieldUpdate } from "./peer-message-handler/handlePreviewFieldUpdate";
+import type { ICollaborationState, IPeer } from "./types";
 
 const PEER_MESSAGE_TYPE_MAP = {
   [PEER_MESSAGE_TYPE_FIELD_SUBSCRIBE_ON]: "Field Subscribe On",
@@ -33,6 +33,13 @@ const PEER_MESSAGE_TYPE_MAP = {
   [PEER_MESSAGE_TYPE_ACTIVE_DOCUMENT_CHANGE]: "Active Document Change",
   [PEER_MESSAGE_TYPE_ACTIVE_URL]: "Active URL",
   [PEER_MESSAGE_TYPE_PEER_MUTATION]: "Peer Mutation",
+
+  [PEER_MESSAGE_TYPE_HOT_FIELD_UPDATE]: "Hot Field Update",
+  [PEER_MESSAGE_TYPE_PREVIEW_FIELD_UPDATE]: "Preview Field Update",
+
+  [PEER_MESSAGE_TYPE_Y_UPDATE]: "Y Update",
+  [PEER_MESSAGE_TYPE_Y_AWARENESS]: "Y Awareness",
+  [PEER_MESSAGE_TYPE_Y_AWARENESS_REQUEST]: "Y Awareness Request",
 };
 
 export const onPeerMessage = (
@@ -45,7 +52,7 @@ export const onPeerMessage = (
 
   // some fake delay
   // debug only
-  if (state.ownClientId && state?.ownClientId > peer.clientId && !hasDelay) {
+  if (state.ownClientId && state.ownClientId > peer.clientId && !hasDelay) {
     setTimeout(() => {
       onPeerMessage(state, peer, data, true);
     }, 100);
@@ -57,10 +64,10 @@ export const onPeerMessage = (
   window.c.collaboration.incoming_callstack =
     // @ts-ignore
     window.c.collaboration.incoming_callstack || [];
-  PEER_MESSAGE_TYPE_MAP[peerMessageType as number] &&
+  (PEER_MESSAGE_TYPE_MAP as any)[peerMessageType as number] &&
     // @ts-ignore
     window.c.collaboration.incoming_callstack.push(
-      PEER_MESSAGE_TYPE_MAP[peerMessageType as number]
+        (PEER_MESSAGE_TYPE_MAP as any)[peerMessageType as number]
     );
 
   switch (peerMessageType) {
