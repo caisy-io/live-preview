@@ -31,6 +31,13 @@ export enum INCOMING_SOCKET_MESSAGE_TYPE {
   CHANGE = "change",
   ASSIGNMENT = "assignment",
   PEER_MESSAGE = "peer",
+  // POKE_REQUEST = "pokereq",
+  // POKE_RESPONSE = "pokeres",
+  DEBUG = "debug",
+  // V2
+  YDOC_INIT_TO_CLIENT = "yitc",
+  YDOC_NOT_FOUND_TO_CLIENT = "ynftc",
+  YDOC_UPDATE_TO_CLIENT = "yutc",
 }
 export enum OUTGOING_SOCKET_MESSAGE_TYPE {
   SWITCH = "switch",

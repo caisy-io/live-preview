@@ -122,6 +122,14 @@ export const startCollaborationConnection = ({
           peer.handleSocketMessage(base64ToUint8Array(payload.data));
         }
         break;
+   case INCOMING_SOCKET_MESSAGE_TYPE.DEBUG:
+                break;
+            case INCOMING_SOCKET_MESSAGE_TYPE.YDOC_INIT_TO_CLIENT:
+                break;
+            case INCOMING_SOCKET_MESSAGE_TYPE.YDOC_NOT_FOUND_TO_CLIENT:
+                break;
+            case INCOMING_SOCKET_MESSAGE_TYPE.YDOC_UPDATE_TO_CLIENT:
+                break;        
       default:
         console.error("unknown ws message type", payload.t);
     }

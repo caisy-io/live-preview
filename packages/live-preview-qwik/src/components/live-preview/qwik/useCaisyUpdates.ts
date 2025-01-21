@@ -1,6 +1,18 @@
 import { $, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { globalStore } from "../javascript/globalstore";
-import { set } from "../helper";
+import { get, set } from "../helper";
+
+const getAllConnectedIds = (data: any) => {
+    const allIds: string[] = [];
+
+    data?.content?.forEach((block: any) => {
+        if (block?.type == "documentLink" && block.attrs?.documentId) {
+            allIds.push(block.attrs.documentId);
+        }
+    });
+
+    return allIds;
+};
 
 export function useCaisyUpdates<T>(originalData: T, options?: { locale?: string; richtextV2?: boolean }) {
     const { locale } = options || {};
@@ -29,9 +41,29 @@ export function useCaisyUpdates<T>(originalData: T, options?: { locale?: string;
                 const richtextKey = options?.richtextV2
                     ? `${key}.${update.fieldName}`
                     : `${key}.${update.fieldName}.json`;
-                set(newState.data[update.localeApiName], richtextKey, update.value);
+
+                if (options?.richtextV2) {
+                    set(newState.data[update.localeApiName], richtextKey, update.value);
+                } else {
+                    let dataBefore: any = undefined;
+                    const curretObject = get(newState.data[update.localeApiName], richtextKey);
+                    if (curretObject) {
+                        const currentConnectionIds = getAllConnectedIds(curretObject);
+                        dataBefore = currentConnectionIds;
+                    }
+
+                    const allConnectedIds = getAllConnectedIds(update.value);
+
+                    if (dataBefore != undefined && dataBefore.length !== allConnectedIds.length) {
+                        window.location.reload();
+                        return;
+                    }
+
+                    set(newState.data[update.localeApiName], richtextKey, update.value);
+                }
             } else if (update.fieldType === "connection" || update.fieldType === "file") {
                 window.location.reload();
+                return 
             } else {
                 set(newState.data[update.localeApiName], `${key}.${update.fieldName}`, update.value);
             }
@@ -57,6 +89,19 @@ export function useCaisyUpdates<T>(originalData: T, options?: { locale?: string;
 
             componentNames.forEach((componentName) => {
                 if (typeof data[componentName] === "object") {
+                    // detect richtext connections exist and subscribe to them
+                    Object.keys(data[componentName]).forEach((nextedKey) => {
+                        if (
+                            data[componentName][nextedKey]?.connections &&
+                            Array.isArray(data[componentName][nextedKey].connections)
+                        ) {
+                            recursivelySubscribeToComponents(
+                                data[componentName][nextedKey].connections,
+                                `${key}.${componentName}.${nextedKey}.connections`,
+                            );
+                        }
+                    });
+
                     recursivelySubscribeToComponents(
                         data[componentName],
                         key ? `${key}.${componentName}` : `${componentName}`,
@@ -79,22 +124,6 @@ export function useCaisyUpdates<T>(originalData: T, options?: { locale?: string;
             };
         }
     });
-    // eslint-disable-next-line qwik/no-use-visible-task
-    // useVisibleTask$(({ track }) => {
-    //     track(() => originalData);
-    //     if (isEqual(originalData, orgRef.value)) {
-    //         return;
-    //     }
-    //     orgRef.value = originalData;
-    //     state.value = {
-    //         data: {
-    //             [localeKey]: cloneDeep(originalData),
-    //         },
-    //         version: 0,
-    //     };
-    // });
 
-    // console.log(` state.value.data[localeKey]`, state.value.data[localeKey]);
-    // return state.value.data[localeKey] || originalData;
     return state;
 }

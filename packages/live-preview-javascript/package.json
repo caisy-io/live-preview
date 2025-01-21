@@ -1,11 +1,11 @@
 {
   "name": "@caisy/live-preview-javascript",
-  "version": "1.1.17",
+  "version": "1.1.18",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
-  "author": "nicolasshiken <nicolasshiken@gmail.com>",
+  "author": "Moritz Gruber <m.gruber@caisy.io>",
   "exports": {
     "./inpsect": {
       "import": "./dist/inspect.css",

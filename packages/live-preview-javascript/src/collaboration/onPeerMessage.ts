@@ -33,6 +33,13 @@ const PEER_MESSAGE_TYPE_MAP = {
   [PEER_MESSAGE_TYPE_ACTIVE_DOCUMENT_CHANGE]: "Active Document Change",
   [PEER_MESSAGE_TYPE_ACTIVE_URL]: "Active URL",
   [PEER_MESSAGE_TYPE_PEER_MUTATION]: "Peer Mutation",
+
+  [PEER_MESSAGE_TYPE_HOT_FIELD_UPDATE]: "Hot Field Update",
+  [PEER_MESSAGE_TYPE_PREVIEW_FIELD_UPDATE]: "Preview Field Update",
+
+  [PEER_MESSAGE_TYPE_Y_UPDATE]: "Y Update",
+  [PEER_MESSAGE_TYPE_Y_AWARENESS]: "Y Awareness",
+  [PEER_MESSAGE_TYPE_Y_AWARENESS_REQUEST]: "Y Awareness Request",
 };
 
 export const onPeerMessage = (
