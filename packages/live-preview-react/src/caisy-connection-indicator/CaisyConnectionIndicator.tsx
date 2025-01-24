@@ -3,7 +3,7 @@ import React from "react";
 const { useEffect } = React;
 
 const CaisyConnectionIndicator: React.FC<{
-  i18n: {
+  i18n?: {
     descriptionConnected?: string;
     descriptionReconnecting?: string;
     descriptionDisconnected?: string;
@@ -11,7 +11,9 @@ const CaisyConnectionIndicator: React.FC<{
     livePreviewReconnecting?: string;
     livePreviewDisconnected?: string;
   };
-}> = ({ i18n }) => {
+}> = (props) => {
+  const i18n = props?.i18n || {};
+  
   useEffect(() => {
     if (typeof window === "undefined") return;
 

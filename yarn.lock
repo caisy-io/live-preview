@@ -561,12 +561,12 @@
   dependencies:
     csstype "^3.1"
 
-"@caisy/live-preview-javascript@*", "@caisy/live-preview-javascript@^1.1.18", "@caisy/live-preview-javascript@file:/Users/mgruber/git/caisy/live-preview/packages/live-preview-javascript":
-  version "1.1.18"
+"@caisy/live-preview-javascript@*", "@caisy/live-preview-javascript@^1.1.19", "@caisy/live-preview-javascript@file:/Users/mgruber/git/caisy/live-preview/packages/live-preview-javascript":
+  version "1.1.19"
   resolved "file:packages/live-preview-javascript"
 
 "@caisy/live-preview-qwik@file:/Users/mgruber/git/caisy/live-preview/packages/live-preview-qwik":
-  version "1.0.36"
+  version "1.0.40"
   resolved "file:packages/live-preview-qwik"
   dependencies:
     "@caisy/readable-stream" "4.5.6"
@@ -575,7 +575,7 @@
     lib0 "^0.2.98"
 
 "@caisy/live-preview-react@*", "@caisy/live-preview-react@file:/Users/mgruber/git/caisy/live-preview/packages/live-preview-react":
-  version "1.1.18"
+  version "1.1.20"
   resolved "file:packages/live-preview-react"
   dependencies:
     "@swc/core" "^1.4.11"

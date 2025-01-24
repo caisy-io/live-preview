@@ -11,8 +11,16 @@ export const caisyLivePreview = (settings: {
     namespace?: string;
     enabled?: boolean;
     caisyEndpoint?: string;
+    hooks?: {
+        onActiveDocumentChange?: (update: any) => void;
+    }
 }) => {
+
     if (typeof window !== "undefined") {
+        if (!settings){
+            console.warn("caisyLivePreview settings is not defined");
+            return;
+        }
         const { token } = settings;
 
         if (!token || `${token}` === "null" || `${token}` === "undefined") {
@@ -29,6 +37,10 @@ export const caisyLivePreview = (settings: {
             globalStore.pubsub.emit("localeChange", [locale]);
         } else {
             globalStore["defaultlocale"] = locale;
+        }
+
+        if (typeof settings.hooks?.onActiveDocumentChange === "function") {
+            globalStore.pubsub.on("sameUserActiveDocumentChange", settings.hooks.onActiveDocumentChange);
         }
 
         const inpsectMode = settings.enabled && (settings.inspectMode === false ? false : true);

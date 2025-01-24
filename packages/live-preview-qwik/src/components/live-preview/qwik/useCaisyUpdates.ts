@@ -1,4 +1,4 @@
-import { $, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { $, Signal, useComputed$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { globalStore } from "../javascript/globalstore";
 import { get, set } from "../helper";
 
@@ -14,7 +14,10 @@ const getAllConnectedIds = (data: any) => {
     return allIds;
 };
 
-export function useCaisyUpdates<T>(originalData: T, options?: { locale?: string; richtextV2?: boolean }) {
+export function useCaisyUpdates<T>(
+    originalData: T,
+    options?: { locale?: string; richtextV2?: boolean },
+): { liveProps: Signal<Awaited<T>>; version: Signal<Awaited<number>> } {
     const { locale } = options || {};
 
     const activeLocale = useSignal(locale || globalStore["defaultlocale"] || "en");
@@ -63,7 +66,7 @@ export function useCaisyUpdates<T>(originalData: T, options?: { locale?: string;
                 }
             } else if (update.fieldType === "connection" || update.fieldType === "file") {
                 window.location.reload();
-                return 
+                return;
             } else {
                 set(newState.data[update.localeApiName], `${key}.${update.fieldName}`, update.value);
             }
@@ -125,5 +128,7 @@ export function useCaisyUpdates<T>(originalData: T, options?: { locale?: string;
         }
     });
 
-    return state;
+    const updatedDataByLocale = useComputed$(() => state.value.data[localeKey]);
+    const versionSig = useComputed$(() => state.value.version);
+    return { liveProps: updatedDataByLocale, version: versionSig };
 }

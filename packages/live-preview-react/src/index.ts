@@ -8,6 +8,8 @@ export const caisyLivePreview = livePreviewJavascript.caisyLivePreview;
 export const getCaisyInspectProps = livePreviewJavascript.getCaisyInspectProps;
 export const getCaisyToken = livePreviewJavascript.getCaisyToken;
 
+import "./caisy-connection-indicator/caisy-connection-indicator.css"
+
 export { useCaisyUpdates }
 
 const livePreviewReact = {

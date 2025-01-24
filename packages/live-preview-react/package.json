@@ -1,13 +1,14 @@
 {
   "name": "@caisy/live-preview-react",
-  "version": "1.1.18",
+  "version": "1.1.20",
   "publishConfig": {
     "access": "public"
   },
   "private": false,
   "author": "Moritz Gruber <m.gruber@caisy.io>",
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/index.js",
+    "./index.css": "./dist/index.css"
   },
   "scripts": {
     "lint": "eslint . --max-warnings 0",
@@ -18,7 +19,7 @@
     "@swc/core": "^1.4.11"
   },
   "peerDependencies": {
-    "@caisy/live-preview-javascript": "^1.1.18",
+    "@caisy/live-preview-javascript": "^1.1.19",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
