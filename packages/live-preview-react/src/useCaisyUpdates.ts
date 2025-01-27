@@ -18,12 +18,28 @@ if (!globalStore["pubsub"]) {
   globalStore["pubsub"] = createPubSub();
 }
 
+function getAllConnectedIds(data: any) {
+  const allIds: string[] = [];
+
+  data?.content?.forEach((block: any) => {
+    if (block?.type == "documentLink" && block.attrs?.documentId) {
+      allIds.push(block.attrs.documentId);
+    }
+  });
+
+  return allIds;
+}
+
+function get(obj: any, path: string) {
+  return path.split(".").reduce((acc, part) => acc && acc[part], obj);
+}
+
 export function useCaisyUpdates<T>(
   originalData: T,
   options?: { locale?: string; richtextV2?: boolean },
   onUpdateOverwrite?: {
-    "connection": (event: {update: any, key:string}) => void,
-    "file": (event: {update: any, key:string}) => void
+    connection: (event: { update: any; key: string }) => void;
+    file: (event: { update: any; key: string }) => void;
   }
 ): T {
   const orgRef = useRef(originalData);
@@ -56,14 +72,45 @@ export function useCaisyUpdates<T>(
         const richtextKey = options?.richtextV2
           ? `${key}.${update.fieldName}`
           : `${key}.${update.fieldName}.json`;
+
+        if (options?.richtextV2) {
+          set(newState.data[update.localeApiName], richtextKey, update.value);
+          return;
+        }
+        // richtextV3+ implementation
+        let dataBefore: any = undefined;
+        const curretObject = get(
+          newState.data[update.localeApiName],
+          richtextKey
+        );
+
+        if (curretObject) {
+          const currentConnectionIds = getAllConnectedIds(curretObject);
+          dataBefore = currentConnectionIds;
+        }
+
+        const allConnectedIds = getAllConnectedIds(update.value);
+
+        if (
+          dataBefore != undefined &&
+          dataBefore.length !== allConnectedIds.length
+        ) {
+          if (onUpdateOverwrite && onUpdateOverwrite[update.fieldType]) {
+            onUpdateOverwrite[update.fieldType]({ update, key: richtextKey });
+          } else {
+            window.location.reload();
+          }
+          return;
+        }
+
         set(newState.data[update.localeApiName], richtextKey, update.value);
       } else if (
         update.fieldType === "connection" ||
         update.fieldType === "file"
       ) {
         if (onUpdateOverwrite && onUpdateOverwrite[update.fieldType]) {
-          onUpdateOverwrite[update.fieldType]({update, key});
-        }else {
+          onUpdateOverwrite[update.fieldType]({ update, key });
+        } else {
           window.location.reload();
         }
       } else {
@@ -94,6 +141,19 @@ export function useCaisyUpdates<T>(
 
       componentNames.forEach((componentName) => {
         if (typeof data[componentName] === "object") {
+          // detect richtext connections exist and subscribe to them
+          Object.keys(data[componentName]).forEach((nextedKey) => {
+            if (
+              data[componentName][nextedKey]?.connections &&
+              Array.isArray(data[componentName][nextedKey].connections)
+            ) {
+              recursivelySubscribeToComponents(
+                data[componentName][nextedKey].connections,
+                `${key}.${componentName}.${nextedKey}.connections`
+              );
+            }
+          });
+
           recursivelySubscribeToComponents(
             data[componentName],
             key ? `${key}.${componentName}` : `${componentName}`
@@ -104,46 +164,6 @@ export function useCaisyUpdates<T>(
 
     recursivelySubscribeToComponents(originalData, null);
   }, [originalData]);
-
-  // useEffect(() => {
-  //   // search for id
-  //   // search for __typename
-  //   // const typename = (originalData as any)?.__typename;
-  //   // console.log(` id`, id);
-  //   // console.log(` typename`, typename);
-  //   // const key = `${typename}!${id}`;
-  //   if (!id) return;
-  //   let t: any = null;
-
-  //   const onUpdate = (update) => {
-  //     setState((prev) => {
-  //       if (!prev.data[update.localeApiName]) {
-  //         prev.data[update.localeApiName] = cloneDeep(originalData);
-  //       }
-
-  //       if (update.fieldType === "richtext") {
-  //         prev.data[update.localeApiName][update.fieldName] = {
-  //           json: update.value,
-  //         };
-  //       } else if (update.fieldType === "connection") {
-  //         t = setTimeout(() => {
-  //           window.location.reload();
-  //         }, 200);
-  //       } else {
-  //         prev.data[update.localeApiName][update.fieldName] = update.value;
-  //       }
-
-  //       return { data: prev.data, version: state.version + 1 };
-  //     });
-  //   };
-
-  //   globalStore.pubsub.on(id, onUpdate);
-
-  //   return () => {
-  //     t && clearTimeout(t);
-  //     globalStore.pubsub.off(id, onUpdate);
-  //   };
-  // }, []);
 
   useEffect(() => {
     if (isEqual(originalData, orgRef.current)) {
