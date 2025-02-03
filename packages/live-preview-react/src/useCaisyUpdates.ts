@@ -1,22 +1,8 @@
 import React from "react";
-import createPubSub from "./pubsub";
 import { isEqual, set } from "./helper";
+import { globalStore } from "./globalStore";
+
 const { useRef, useEffect, useState } = React;
-
-const globalRef =
-  (typeof window !== "undefined" && (window as any).c) ||
-  (typeof window !== "undefined" &&
-    ((window as any)["c"] = {}) &&
-    (window as any).c) ||
-  ({} as any);
-
-const globalStore = globalRef["preview"] || (globalRef["preview"] = {});
-
-globalStore["subscribers"] = globalStore["subscribers"] || new Map();
-
-if (!globalStore["pubsub"]) {
-  globalStore["pubsub"] = createPubSub();
-}
 
 function getAllConnectedIds(data: any) {
   const allIds: string[] = [];

@@ -3,6 +3,10 @@ import livePreviewJavascript from "@caisy/live-preview-javascript";
 import CaisyConnectionIndicatorInner  from "./caisy-connection-indicator/CaisyConnectionIndicator";
 import {useCaisyUpdates} from "./useCaisyUpdates";
 
+export { isEqual, set} from "./helper"
+export {createPubSub} from "./pubsub"
+export { globalStore } from "./globalStore";
+
 export const CaisyConnectionIndicator = CaisyConnectionIndicatorInner;
 export const caisyLivePreview = livePreviewJavascript.caisyLivePreview;
 export const getCaisyInspectProps = livePreviewJavascript.getCaisyInspectProps;
