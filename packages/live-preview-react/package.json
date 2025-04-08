@@ -1,6 +1,6 @@
 {
   "name": "@caisy/live-preview-react",
-  "version": "1.2.1",
+  "version": "1.2.1-for-native-v2",
   "publishConfig": {
     "access": "public"
   },

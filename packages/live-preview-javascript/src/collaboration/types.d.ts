@@ -21,7 +21,7 @@ export interface ICollaborationLocation {
 }
 export interface ICollaborationState {
   peers: Peer[];
-  localBroadcastChannel: BroadcastChannel | null;
+  localBroadcastChannel: any | null;
   socket: WebSocket;
   ownClientId?: string;
   clientIds: string[];

@@ -1,5 +1,4 @@
 import { createPubSub } from "./pubsub";
-import { startInspectMode } from "./inspect";
 import { startCollaborationConnection } from "./collaboration/collaborationConnection";
 
 const globalRef =
@@ -50,10 +49,10 @@ export const caisyLivePreview = (settings: {
       const inpsectMode =
         settings.enabled && (settings.inspectMode === false ? false : true);
   
-      window.document.body.setAttribute(
-        "data-caisy-inspect-mode",
-        `${inpsectMode}`
-      );
+      // window.document.body.setAttribute(
+      //   "data-caisy-inspect-mode",
+      //   `${inpsectMode}`
+      // );
   
       if (inpsectMode && settings.enabled) {
         const cleanUpCollab = startCollaborationConnection({
@@ -61,12 +60,12 @@ export const caisyLivePreview = (settings: {
           token: settings.token,
           caisyEndpoint: settings.caisyEndpoint,
         });
-        const closeInspectMode = startInspectMode({
-          locale,
-          projectId: settings.projectId,
-        });
+        // const closeInspectMode = startInspectMode({
+        //   locale,
+        //   projectId: settings.projectId,
+        // });
         return () => {
-          closeInspectMode();
+          // closeInspectMode();
           cleanUpCollab?.();
         };
       }

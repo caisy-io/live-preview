@@ -24,12 +24,12 @@ const getSocket = ({ projectId, token, onMessage, caisyEndpoint }) => {
 
   socket.onopen = () => {
     console.log("WebSocket connection opened!");
-    document.body.setAttribute("data-collaboration", "Connected");
+    // document.body.setAttribute("data-collaboration", "Connected");
   };
 
   socket.onerror = (error) => {
     console.error(`WebSocket error: `, { error });
-    document.body.setAttribute("data-collaboration", "Reconnecting");
+    // document.body.setAttribute("data-collaboration", "Reconnecting");
   };
 
   return { socket };
@@ -138,25 +138,16 @@ export const startCollaborationConnection = ({
   const { socket } = getSocket({ token, projectId, onMessage, caisyEndpoint });
   state.socket = socket;
 
-  state.localBroadcastChannel = new BroadcastChannel(
-    `collaboration-${projectId}`
-  );
-  const listener = (event) => {
-    onLocalBroadcastMessage(state, event.data);
-  };
-
-  state.localBroadcastChannel.addEventListener("message", listener);
-
   const cleanUp = () => {
     if (state.localBroadcastChannel) {
-      state.localBroadcastChannel.removeEventListener("message", listener);
+      // state.localBroadcastChannel.removeEventListener("message", listener);
       state.localBroadcastChannel.close();
     }
 
     if (state.socket !== null) {
       state.socket.onclose = () => {
         console.log("WebSocket is closed");
-        document.body.setAttribute("data-collaboration", "Disconnected");
+        // document.body.setAttribute("data-collaboration", "Disconnected");
       };
       state.socket.close();
       state.socket = null as any;

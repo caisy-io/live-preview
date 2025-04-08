@@ -20,6 +20,10 @@ function get(obj: any, path: string) {
   return path.split(".").reduce((acc, part) => acc && acc[part], obj);
 }
 
+const structuredClone = (obj: any) => {
+  return JSON.parse(JSON.stringify(obj));
+};
+
 export function useCaisyUpdates<T>(
   originalData: T,
   options?: { locale?: string; richtextV2?: boolean },
@@ -158,7 +162,7 @@ export function useCaisyUpdates<T>(
     orgRef.current = originalData;
     setState({
       data: {
-        [localeKey]: structuredClone(originalData),
+        [localeKey]: JSON.parse(JSON.stringify(originalData)),
       },
       version: 0,
     });

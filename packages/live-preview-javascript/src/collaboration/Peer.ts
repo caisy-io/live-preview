@@ -1,4 +1,3 @@
-import SimplePeer from "simple-peer";
 // @ts-ignore
 import { Observable } from "lib0/observable";
 
@@ -22,7 +21,7 @@ export class Peer extends Observable<any> {
   clientId: string;
   // @ts-ignore
   websocket: WebSocket;
-  p2p: SimplePeer.Instance;
+  p2p: undefined;
   localPingInterval: any;
   connectedP2P = false; // communication via p2p - will not in some networks such as vpn
   connectedLocal = false; // communication via local boradcast channel in the same browser
@@ -101,18 +100,18 @@ export class Peer extends Observable<any> {
       return;
     }
 
-    if (this.connectedP2P) {
-      const p2pIsReady =
-        !this.p2p.destroying &&
-        this.p2p._channel &&
-        this.p2p._pcReady &&
-        this.p2p._channel?.readyState == "open";
-      if (p2pIsReady) {
-        return this.p2p.send(data);
-      } else {
-        console.log(` P2P NOT READY using ws instead`);
-      }
-    }
+    // if (this.connectedP2P) {
+      // const p2pIsReady =
+      //   !this.p2p.destroying &&
+      //   this.p2p._channel &&
+      //   this.p2p._pcReady &&
+      //   this.p2p._channel?.readyState == "open";
+      // if (p2pIsReady) {
+      //   return this.p2p.send(data);
+      // } else {
+      //   console.log(` P2P NOT READY using ws instead`);
+      // }
+    // }
 
     state.socket.send(
       JSON.stringify({
@@ -124,7 +123,7 @@ export class Peer extends Observable<any> {
   }
 
   signal(data: any) {
-    this.p2p.signal(data);
+    // this.p2p.signal(data);
   }
 
   handleSocketMessage(data: any) {
@@ -132,46 +131,46 @@ export class Peer extends Observable<any> {
   }
 
   setupP2P() {
-    const state = window.c.collaboration!;
+    // const state = window.c.collaboration!;
 
-    this.p2p = new SimplePeer({
-      initiator: (state?.ownClientId as string) > this.clientId,
-    });
+    // this.p2p = new SimplePeer({
+    //   initiator: (state?.ownClientId as string) > this.clientId,
+    // });
 
-    this.p2p.on("data", (data) => {
-      onPeerMessage(state, this, data);
-    });
+    // this.p2p.on("data", (data) => {
+    //   onPeerMessage(state, this, data);
+    // });
 
-    this.p2p.on("signal", (data) => {
-      // Send this data to the other peer, via your chosen signaling method
-      state.socket?.send(
-        JSON.stringify({
-          t: OUTGOING_SOCKET_MESSAGE_TYPE.SIGNAL,
-          data,
-          to: this.clientId,
-        })
-      );
-    });
+    // this.p2p.on("signal", (data) => {
+    //   // Send this data to the other peer, via your chosen signaling method
+    //   state.socket?.send(
+    //     JSON.stringify({
+    //       t: OUTGOING_SOCKET_MESSAGE_TYPE.SIGNAL,
+    //       data,
+    //       to: this.clientId,
+    //     })
+    //   );
+    // });
 
-    this.p2p.on("error", (err) => {
-      this.connectedP2P = false;
-      console.log(" peer error", err);
-      document.body.setAttribute("data-collaboration", "Disconnected");
-    });
+    // this.p2p.on("error", (err) => {
+    //   this.connectedP2P = false;
+    //   console.log(" peer error", err);
+    //   document.body.setAttribute("data-collaboration", "Disconnected");
+    // });
 
-    this.p2p.on("close", () => {
-      if (state.peers.length > 0) {
-        document.body.setAttribute("data-collaboration", "Connected");
-        return;
-      }
-      this.connectedP2P = false;
-      console.log("peer closed");
-      document.body.setAttribute("data-collaboration", "Reconnecting");
-    });
+    // this.p2p.on("close", () => {
+    //   if (state.peers.length > 0) {
+    //     document.body.setAttribute("data-collaboration", "Connected");
+    //     return;
+    //   }
+    //   this.connectedP2P = false;
+    //   console.log("peer closed");
+    //   document.body.setAttribute("data-collaboration", "Reconnecting");
+    // });
 
-    this.p2p.on("connect", () => {
-      this.connectedP2P = true;
-      document.body.setAttribute("data-collaboration", "Connected");
-    });
+    // this.p2p.on("connect", () => {
+    //   this.connectedP2P = true;
+    //   document.body.setAttribute("data-collaboration", "Connected");
+    // });
   }
 }
